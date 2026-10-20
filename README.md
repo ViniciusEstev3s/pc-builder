@@ -25,7 +25,7 @@ Pc-builder/
 │   ├── data/
 │   │   └── hardware-parts.json     # Base de dados das peças
 │   └── assets/
-│       └── img/                    # Imagens de hardware e ícones da interface
+│       └── images/                    # Imagens de hardware e ícones da interface
 └── src/                            # Código-fonte da aplicação
     ├── css/
     │   ├── global.css              # Variáveis, reset e estilos base
