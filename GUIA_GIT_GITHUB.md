@@ -1,317 +1,564 @@
-# Guia de Git e GitHub — Projeto PC Builder
+<div align="center">
 
-## 1. Objetivo
+# ⚡ GUIA DEFINITIVO DE GIT & GITHUB
 
-Este guia apresenta os conceitos, comandos e procedimentos utilizados no projeto PC Builder (Simulador de Montagem de PC). O objetivo é ajudar os integrantes a trabalhar de forma organizada, acompanhar as alterações e colaborar sem prejudicar o trabalho dos outros grupos.
+### `PC BUILDER` · Simulador Interativo de Montagem de PC
 
-## 2. Git, GitHub e repositório
+**Documentação Oficial de Engenharia, Governança e Fluxo Colaborativo**
 
-### O que é Git?
+![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
+![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 
-Git é um sistema de controle de versão que registra as alterações feitas nos arquivos. Ele permite acompanhar o histórico do projeto e comparar diferentes versões.
+![Fluxo](https://img.shields.io/badge/fluxo-branches%20%2B%20PRs-00C853?style=flat-square)
+![Commits](https://img.shields.io/badge/commits-sem%C3%A2nticos-2962FF?style=flat-square)
+![Branch](https://img.shields.io/badge/branch-grupo--N%2Ftarefa-FF6D00?style=flat-square)
+![Main](https://img.shields.io/badge/main-protegida-D50000?style=flat-square)
 
-### O que é GitHub?
+</div>
 
-GitHub é uma plataforma online que hospeda repositórios Git e oferece recursos para colaboração, como branches, Issues, Pull Requests e revisão de alterações.
+---
 
-### O que é um repositório?
+## 🧭 Sumário Navegável
 
-É o local onde ficam os arquivos do projeto e o histórico de alterações. O repositório local fica no computador do integrante, enquanto o remoto fica hospedado no GitHub.
+| # | Seção | # | Seção |
+|:-:|---|:-:|---|
+| 1 | [Objetivo e Importância](#1-objetivo-e-importância-do-controle-de-versão) | 10 | [Revisão de PRs](#10-revisão-dos-pull-requests-code-review) |
+| 2 | [Conceitos e Arquitetura](#2-git-github-e-repositório) | 11 | [Conflitos e Troubleshooting](#11-conflitos-e-problemas-comuns) |
+| 3 | [Preparação e Interfaces](#3-preparação-e-interfaces-visuais) | 12 | [Boas Práticas e .gitignore](#12-boas-práticas-segurança-e-gitignore) |
+| 4 | [Nomes de Branches](#4-padrão-de-nomes-das-branches) | 13 | [README e Materiais](#13-readme-e-materiais-de-apoio) |
+| 5 | [Commits Semânticos](#5-padrão-das-mensagens-de-commit) | 14 | [Deploy e GitHub Pages](#14-deploy-e-github-pages) |
+| 6 | [Catálogo de Comandos](#6-catálogo-completo-de-comandos-do-git) | 15 | [Checklist do PR](#15-checklist-antes-de-abrir-um-pull-request) |
+| 7 | [Push, Pull e Fetch](#7-push-pull-e-fetch) | 16 | [Glossário](#16-glossário-técnico-expandido) |
+| 8 | [Fluxo de 10 Etapas](#8-fluxo-de-trabalho-do-projeto-10-etapas) | 17 | [Resumo do Fluxo](#17-resumo-do-fluxo) |
+| 9 | [Abrindo um PR](#9-como-abrir-um-pull-request) | | |
 
-### O que é um commit?
+---
 
-Commit é um registro de alterações selecionadas no histórico do Git. Cada commit deve possuir uma mensagem curta e clara sobre o que foi realizado.
+## 1. Objetivo e Importância do Controle de Versão
 
-Exemplo:
+Este guia apresenta os conceitos fundamentais, a arquitetura de funcionamento, o catálogo de comandos e os procedimentos operacionais utilizados no projeto **PC Builder** (Simulador de Montagem de PC).
 
-`docs: atualiza guia git github`
+> [!IMPORTANT]
+> 🎯 **Meta:** garantir que todos os integrantes trabalhem de forma organizada, acompanhem as alterações com precisão e colaborem em paralelo **sem prejudicar ou sobrescrever o trabalho dos outros grupos**.
 
-### O que é uma branch?
+### 💡 Por que o controle de versão é essencial no PC Builder?
 
-Branch é uma linha de trabalho separada que permite desenvolver uma tarefa sem modificar diretamente a versão principal do projeto.
+Quando diversos grupos desenvolvem módulos diferentes de uma mesma aplicação web (HTML, CSS e JavaScript), o controle de versão resolve quatro problemas críticos:
 
-A branch `main` representa a versão principal do repositório. As demais branches devem ser utilizadas para desenvolver e revisar tarefas específicas.
+| | Pilar | Descrição |
+|:-:|---|---|
+| 🔀 | **Isolamento de Escopo** | O Grupo 1 desenvolve a seleção de componentes enquanto o Grupo 2 constrói o cálculo de orçamento em tempo real, sem que o código em andamento de um trave o ambiente do outro. |
+| 🔍 | **Rastreabilidade e Auditoria** | Registra quem alterou cada linha, quando e com qual propósito. |
+| ⏪ | **Reversibilidade e Segurança** | Se uma alteração quebrar o layout ou a validação de compatibilidade de hardware, é possível comparar com a versão anterior e restaurar o funcionamento. |
+| ✅ | **Controle de Qualidade** | Nenhum código entra na `main` sem testes locais e revisão técnica (Code Review). |
 
-### O que é um Pull Request?
+---
 
-Pull Request (PR) é uma solicitação para revisar e integrar as alterações de uma branch em outra, normalmente na `main`. Ele permite verificar as mudanças, discutir melhorias e solicitar correções antes da integração.
+## 2. Git, GitHub e Repositório
 
-## 3. Preparação para trabalhar no projeto
+### 2.1. Conceitos Fundamentais
 
-Antes de começar uma tarefa:
+| Conceito | O que é? | Finalidade prática no projeto |
+|---|---|---|
+| 🧰 **Git** | Sistema de controle de versão distribuído (DVCS) que roda localmente. | Registra alterações, mantém o histórico completo e compara versões sem depender de internet. |
+| ☁️ **GitHub** | Plataforma em nuvem que hospeda repositórios Git. | Colaboração entre grupos: branches, Issues, Pull Requests, revisão de código e GitHub Pages. |
+| 📦 **Repositório** | Local onde ficam os arquivos e todo o histórico (pasta oculta `.git`). | Divide-se em **Local** (no seu computador) e **Remoto** (no GitHub, apelido padrão `origin`). |
+| 📸 **Commit** | Registro permanente (snapshot) de alterações, identificado por um hash SHA-1. | Documenta a evolução passo a passo, com mensagem curta e clara. Ex.: `docs: atualiza guia git github`. |
+| 🌿 **Branch** | Linha de trabalho separada, criada a partir do código principal. | Permite desenvolver uma tarefa sem tocar na versão estável. A `main` é a versão principal. |
+| 🔁 **Pull Request (PR)** | Solicitação formal para revisar e integrar (merge) uma branch em outra, normalmente a `main`. | Barreira de qualidade: revisão linha por linha, discussão e correções antes da integração. |
 
-1. Confirme que está no repositório correto: `pc-builder`.
-2. Verifique se possui acesso para contribuir.
-3. Leia o `README.md` e o arquivo `PADROES_GIT.md`.
-4. Confira a branch atual e se existem alterações locais pendentes.
-5. Atualize a versão de trabalho antes de criar uma nova branch.
+### 2.2. Arquitetura Interna: os 4 Ambientes do Arquivo
 
-O GitHub Desktop pode ser utilizado para executar as operações mais comuns por meio de uma interface gráfica, sem precisar digitar todos os comandos no terminal.
+```mermaid
+flowchart LR
+    A["📝 Working Directory<br/>(editor de código)"] -- "git add" --> B["📋 Staging Area<br/>(Index)"]
+    B -- "git commit" --> C["🗄️ Repositório Local<br/>(.git)"]
+    C -- "git push" --> D["☁️ Repositório Remoto<br/>(GitHub · origin)"]
+    D -- "git fetch / pull" --> A
+```
 
-## 4. Padrão de nomes das branches
+| Estágio | Estado do arquivo | Descrição |
+|---|---|---|
+| **Working Directory** | `Untracked` / `Modified` | Pasta visível onde você cria e edita. *Untracked* = arquivo novo que o Git ainda não monitora. *Modified* = arquivo conhecido que sofreu edições ainda não preparadas. |
+| **Staging Area / Index** | `Staged` | Camada intermediária onde você seleciona (com `git add`) o que entra no próximo commit. |
+| **Repositório Local** | `Committed` | Banco de dados na sua máquina onde `git commit` grava o pacote preparado. |
+| **Repositório Remoto** | publicado | Servidor na nuvem para onde `git push` transmite seus commits, tornando-os acessíveis aos demais grupos. |
 
-As branches de trabalho devem seguir o padrão definido no `PADROES_GIT.md`:
+### 2.3. Recursos Extras do GitHub para a Equipe
 
-`grupo-N/descricao-da-tarefa`
+| Recurso | Função |
+|---|---|
+| 🎫 **Issues** | Cartões para registrar tarefas, relatar bugs do simulador ou sugerir melhorias. Cada um recebe número único (ex.: `#15`). |
+| 🏷️ **Labels** | Etiquetas coloridas para classificar atividades (`feat`, `bug`, `documentacao`, `grupo-1`, `revisao-pendente`). |
+| 🎯 **Milestones** | Agrupam Issues e PRs para acompanhar o percentual de conclusão de uma entrega. |
+| 📊 **GitHub Projects** | Quadro Kanban (A Fazer · Em Andamento · Em Revisão · Concluído) com a visão de todos os grupos. |
+| 🔒 **Branch Protection Rules** | Impedem envios diretos na `main` e exigem revisão aprovada antes de liberar o *Merge*. |
 
-Regras:
-- Utilizar letras minúsculas.
-- Não utilizar espaços ou acentos.
-- Separar palavras por hífen.
-- Informar o grupo responsável e descrever a tarefa.
-- Criar a branch a partir da `main` atualizada.
+---
 
-Exemplos:
+## 3. Preparação e Interfaces Visuais
 
-- `grupo-1/componentes`
-- `grupo-2/orcamento`
-- `grupo-3/correcao-compatibilidade`
+### ✅ Antes de qualquer tarefa
 
-Os nomes acima são exemplos de tarefas. Antes de criar uma branch, confirme se ela corresponde à atividade realmente definida para o grupo.
+1. **Confirme o repositório:** você está no `pc-builder`?
+2. **Verifique seu acesso:** sua conta tem permissão de escrita (*Write access*)?
+3. **Consulte as regras:** leia o `README.md` e o arquivo normativo `PADROES_GIT.md`.
+4. **Inspecione o estado local:** `git status` mostra a branch atual e alterações pendentes.
+5. **Sincronize a base:** atualize a `main` antes de criar uma nova branch.
 
-## 5. Padrão das mensagens de commit
+### 3.1. Interfaces Gráficas (GitHub Desktop e VS Code)
 
-As mensagens de commit devem seguir o formato:
+Você pode executar as operações mais comuns sem digitar todos os comandos no terminal.
 
-`tipo: descricao curta`
+<details>
+<summary><b>🖥️ GitHub Desktop</b></summary>
 
-A descrição deve ser clara, em português, começar com um verbo no presente e representar uma alteração específica.
+| Elemento da tela | O que faz |
+|---|---|
+| **Current Repository** (topo esquerdo) | Confirma se você está no projeto `pc-builder`. |
+| **Current Branch** (topo central) | Mostra a branch ativa e permite criar novas (*New Branch*). |
+| **Fetch origin / Pull origin** (topo direito) | Busca e baixa as atualizações remotas do GitHub. |
+| **Lista Changes** (esquerda) | Checkboxes selecionam arquivos (`git add`), o campo *Summary* recebe a mensagem (`git commit`) e **Push origin** envia (`git push`). |
 
-Tipos utilizados:
+</details>
 
-- `feat`: adicionar uma funcionalidade.
-- `fix`: corrigir um erro.
-- `docs`: adicionar ou atualizar documentação.
-- `chore`: organizar arquivos ou realizar tarefas de manutenção.
-- `refactor`: reorganizar o código sem alterar o comportamento esperado.
-- `test`: adicionar ou ajustar testes.
+<details>
+<summary><b>🧩 VS Code (<code>Ctrl + Shift + G</code>)</b></summary>
 
-Exemplos:
+| Ação | Equivalente |
+|---|---|
+| Clicar no ícone **+** ao lado de um arquivo modificado | `git add arquivo` |
+| Clicar no nome do arquivo (comparação lado a lado, antes e depois) | `git diff` |
 
-- `feat: adiciona selecao de componentes`
-- `fix: corrige calculo do orcamento`
-- `docs: atualiza instrucoes do projeto`
-- `chore: organiza pasta de imagens`
-- `test: adiciona teste de compatibilidade`
+</details>
 
-Faça commits pequenos e relacionados a uma única tarefa. Antes de registrar um commit, confira quais arquivos foram modificados.
+---
 
-## 6. Comandos básicos do Git
+## 4. Padrão de Nomes das Branches
 
-Os comandos abaixo são utilizados no terminal, dentro da pasta local do projeto.
+As branches devem seguir rigorosamente o padrão do `PADROES_GIT.md`:
 
-### Clonar o repositório
+```text
+grupo-N/descricao-da-tarefa
+```
 
-`git clone URL_DO_REPOSITORIO`
+### 4.1. Regras obrigatórias e motivos técnicos
 
-Cria uma cópia local do repositório remoto. Substitua `URL_DO_REPOSITORIO` pelo endereço real do repositório `pc-builder`.
+| Regra | Motivo |
+|---|---|
+| 🔡 **Apenas letras minúsculas** | Servidores Linux (como o GitHub) diferenciam maiúsculas de minúsculas; o Windows não. Minúsculas evitam erros de referência entre computadores. |
+| 🚫 **Sem espaços, acentos ou caracteres especiais** (`ç ~ ^ : ? *`) | Quebram URLs e têm significado reservado no terminal. |
+| ➖ **Palavras separadas por hífen** | Padrão *kebab-case*, mais legível no terminal. |
+| 👥 **Informar grupo e tarefa** | O prefixo `grupo-N/` identifica de imediato a equipe responsável. |
+| 🔄 **Criar a partir da `main` atualizada** | Evita desenvolver sobre uma versão antiga do projeto. |
 
-### Conferir o estado dos arquivos
+### 4.2. Exemplos comparativos
 
-`git status`
+| Nome da branch | Status | Observação |
+|---|:-:|---|
+| `grupo-1/componentes` | ✅ Correto | Minúsculas, sem acentos, identifica grupo e tarefa. |
+| `grupo-2/orcamento` | ✅ Correto | Sem cedilha (`c` no lugar de `ç`). |
+| `grupo-3/correcao-compatibilidade` | ✅ Correto | Palavras separadas por hífen. |
+| `Grupo-1/Componentes` | ❌ Incorreto | Utiliza letras maiúsculas. |
+| `grupo-2/cálculo de orçamento` | ❌ Incorreto | Contém acento, cedilha e espaços. |
 
-Mostra a branch atual e informa quais arquivos foram modificados ou estão preparados para commit.
+> [!WARNING]
+> Os nomes acima são **exemplos** de tarefas. Antes de criar uma branch, confirme se ela corresponde exatamente à atividade definida para o seu grupo.
 
-### Listar as branches locais
+---
 
-`git branch`
+## 5. Padrão das Mensagens de Commit
 
-Exibe as branches locais disponíveis.
+Formato obrigatório:
 
-### Mudar para a branch principal
+```text
+tipo: descricao curta
+```
 
-`git switch main`
+### 5.1. Diretrizes de escrita
 
-Seleciona a branch principal, desde que não existam alterações locais que impeçam a troca.
+- ✍️ Descrição clara, **em português** e **sem ponto final**.
+- ▶️ Começa sempre com **verbo no presente do indicativo** (adiciona, corrige, atualiza, organiza, remove, simplifica).
+- ⚛️ Representa uma alteração **específica e atômica**: commits pequenos, ligados a uma única tarefa.
+- 🔎 Antes de registrar, confira quais arquivos foram modificados.
 
-### Atualizar a main
+### 5.2. Tipos e finalidades
 
-`git pull origin main`
+| Tipo | Finalidade | Exemplo |
+|:-:|---|---|
+| ✨ `feat` | Adicionar nova funcionalidade visível ou operacional ao simulador. | `feat: adiciona selecao de componentes` |
+| 🐛 `fix` | Corrigir erro, falha de cálculo, link quebrado ou bug de comportamento. | `fix: corrige calculo do orcamento` |
+| 📚 `docs` | Adicionar ou atualizar exclusivamente documentação (`.md`, manuais, comentários). | `docs: atualiza instrucoes do projeto` |
+| 🧹 `chore` | Organizar arquivos, pastas, imagens ou tarefas estruturais de manutenção. | `chore: organiza pasta de imagens` |
+| ♻️ `refactor` | Reorganizar e limpar o código interno sem alterar o comportamento final. | `refactor: simplifica validacao de pecas` |
+| 🧪 `test` | Adicionar ou ajustar roteiros e scripts de testes. | `test: adiciona teste de compatibilidade` |
 
-Busca e integra as atualizações remotas da `main` à branch local atual. Para seguir o fluxo do projeto, execute esse comando estando na `main`.
+---
 
-### Criar uma branch
+## 6. Catálogo Completo de Comandos do Git
 
-`git switch -c grupo-1/componentes`
+> [!NOTE]
+> Execute no terminal (Git Bash, PowerShell ou terminal integrado da IDE), sempre dentro da pasta local do projeto `pc-builder`.
 
-Cria uma branch e muda para ela. Substitua o nome pelo padrão e pela tarefa do seu grupo.
+### 6.1. Configuração inicial e clonagem
 
-### Preparar alterações
+**Configurar a identidade do autor** (`git config`) — nome e e-mail que ficam gravados em cada commit:
 
-`git add arquivo.ext`
+```bash
+git config --global user.name "Seu Nome Completo"
+git config --global user.email "seu_email@exemplo.com"
+```
 
-Adiciona um arquivo específico à área de preparação do próximo commit.
+> `--global` aplica a configuração a todos os repositórios do seu usuário. Use `git config --list` para conferir.
 
-O comando `git add .` prepara todas as alterações da pasta atual. Utilize-o somente depois de conferir os arquivos.
+**Clonar o repositório** (`git clone`) — cópia local completa, com arquivos, branches e histórico:
 
-### Registrar um commit
+```bash
+git clone URL_DO_REPOSITORIO
+```
 
-`git commit -m "docs: atualiza instrucoes do projeto"`
+**Conferir o endereço remoto** (`git remote -v`) — confirma a qual URL do GitHub a pasta está vinculada:
 
-Registra as alterações preparadas no histórico local.
+```bash
+git remote -v
+```
 
-### Enviar alterações ao GitHub
+### 6.2. Diagnóstico, estado e comparação
 
-`git push -u origin grupo-1/componentes`
+**`git status`** — mostra a branch atual, se está sincronizada com o GitHub e quais arquivos foram modificados ou preparados.
 
-Envia os commits da branch para o GitHub. Adapte o nome ao da sua branch.
+```bash
+git status        # visão completa
+git status -s     # visão compacta
+```
 
-### Consultar o histórico
+**`git diff`** — compara alterações linha por linha:
 
-`git log --oneline`
+| Comando | O que mostra |
+|---|---|
+| `git diff` | Alterações no editor que ainda não receberam `git add`. |
+| `git diff --staged` | Alterações já preparadas na Staging Area. |
+| `git diff main` | Diferenças entre a sua branch atual e a `main`. |
 
-Exibe um resumo dos commits realizados.
+### 6.3. Navegação e administração de branches
+
+| Comando | Função |
+|---|---|
+| `git branch` | Lista as branches locais (`*` destaca a ativa). |
+| `git branch -a` | Lista branches locais e remotas. |
+| `git branch -m grupo-1/nome-correto` | Renomeia a branch atual. |
+| `git branch -d grupo-1/tarefa-concluida` | Apaga uma branch local já integrada na `main`. |
+| `git switch main` | Muda para a `main` (sem alterações locais conflitantes). |
+| `git pull origin main` | Busca e integra as atualizações remotas da `main` (execute estando na `main`). |
+| `git switch -c grupo-1/componentes` | Cria uma nova branch a partir da posição atual e já muda para ela. |
+
+### 6.4. Preparação, registro e envio
+
+| Comando | Função |
+|---|---|
+| `git add arquivo.ext` | Prepara um arquivo específico para o próximo commit. |
+| `git add .` | Prepara todas as alterações da pasta atual *(só depois de conferir o `git status`)*. |
+| `git add -p` | Modo interativo: escolhe trechos específicos dentro de um arquivo. |
+| `git commit -m "docs: atualiza instrucoes do projeto"` | Grava as alterações preparadas no histórico local. |
+| `git commit --amend -m "docs: atualiza guia git github"` | Corrige a mensagem do último commit local *(somente se ainda não fez push)*. |
+
+**Enviar ao GitHub** (`git push`):
+
+```bash
+git push -u origin grupo-1/componentes
+```
+
+> A flag `-u` vincula a branch local à remota no primeiro envio; nos seguintes da mesma branch, basta `git push`.
+
+### 6.5. Histórico e auditoria
+
+| Comando | Função |
+|---|---|
+| `git log --oneline` | Resumo limpo: uma linha por commit (hash + mensagem). |
+| `git log --oneline --graph --decorate --all` | Árvore visual de branches e merges. |
+| `git log -n 5 --oneline` | Apenas os últimos 5 commits. |
+| `git show HASH_DO_COMMIT` | Mostra exatamente quais linhas mudaram em um commit. |
+| `git blame arquivo.js` | Mostra autor e commit responsável por cada linha do arquivo. |
+
+### 6.6. Resgate, restauração e gaveta temporária
+
+| Situação prática | Comando | Explicação |
+|---|---|---|
+| Tirar arquivo do `git add` (sem perder o código) | `git restore --staged arquivo.ext` | Remove da Staging Area, mantendo as edições no editor. |
+| Descartar alterações ainda não commitadas | `git restore arquivo.ext` | Volta o arquivo ao estado do último commit. |
+| Guardar trabalho inacabado temporariamente | `git stash -u` e depois `git stash pop` | Guarda numa "gaveta" para limpar a pasta e trocar de branch; depois devolve o código. |
+| Reverter um commit que já subiu com bug | `git revert HASH_DO_COMMIT` | Cria um novo commit que desfaz o problemático, sem apagar o histórico. |
+
+> [!CAUTION]
+> `git restore arquivo.ext` **descarta edições permanentemente**. Confira com `git diff` antes de executar.
+
+---
 
 ## 7. Push, Pull e Fetch
 
-**Push:** envia os commits locais para o repositório remoto.
+| Operação | Comando | O que faz |
+|---|---|---|
+| ⬆️ **Push** | `git push` | Envia os commits locais para o repositório remoto no GitHub. |
+| ⬇️ **Pull** | `git pull` | Busca **e integra** as atualizações remotas na branch atual (`fetch` + `merge`). |
+| 🔭 **Fetch** | `git fetch` | Verifica as atualizações remotas **sem integrá-las** aos arquivos da branch atual. |
 
-**Pull:** busca e integra as atualizações remotas à branch local atual.
+> [!TIP]
+> Não confunda: o **commit** registra a alteração apenas no histórico **local**; o **push** é que envia os commits ao GitHub.
 
-**Fetch:** verifica as atualizações disponíveis no repositório remoto, sem integrá-las automaticamente à branch atual.
+---
 
-É importante não confundir essas operações: o commit registra a alteração no histórico local, enquanto o push envia os commits ao GitHub.
+## 8. Fluxo de Trabalho do Projeto (10 Etapas)
 
-## 8. Fluxo de trabalho do projeto
+```mermaid
+flowchart TD
+    S1["1️⃣ Atualizar a main"] --> S2["2️⃣ Criar branch"]
+    S2 --> S3["3️⃣ Realizar alterações"]
+    S3 --> S4["4️⃣ Testar"]
+    S4 --> S5["5️⃣ Commit"]
+    S5 --> S6["6️⃣ Push"]
+    S6 --> S7["7️⃣ Abrir Pull Request"]
+    S7 --> S8["8️⃣ Revisar"]
+    S8 --> Q{"Ajustes<br/>necessários?"}
+    Q -- "sim" --> S9["9️⃣ Corrigir na mesma branch + push"]
+    S9 --> S8
+    Q -- "não" --> S10["🔟 Integrar (merge)"]
+```
 
-Todos os grupos devem seguir o fluxo de colaboração definido pelo projeto:
+| # | Etapa | Descrição | Comando |
+|:-:|---|---|---|
+| 1 | **Atualizar a main** | Obter as alterações mais recentes do remoto. | `git switch main` · `git pull origin main` |
+| 2 | **Criar uma branch** | Linha de trabalho para uma tarefa específica. | `git switch -c grupo-N/descricao-da-tarefa` |
+| 3 | **Realizar alterações** | Modificar somente os arquivos necessários. | — |
+| 4 | **Testar** | Verificar no navegador se funciona como esperado. | — |
+| 5 | **Fazer commit** | Registrar com mensagem padronizada. | `git add` · `git commit -m "tipo: descricao"` |
+| 6 | **Fazer push** | Enviar a branch ao GitHub. | `git push -u origin grupo-N/descricao-da-tarefa` |
+| 7 | **Abrir um PR** | Solicitar revisão, com a `main` como destino. | *(no GitHub)* |
+| 8 | **Revisar** | Verificar arquivos, commits, testes e descrição do PR. | *(no GitHub)* |
+| 9 | **Corrigir, se necessário** | Ajustes na mesma branch e novo push. | `git push` |
+| 10 | **Integrar** | Merge após as verificações e conforme as regras do repositório. | *(no GitHub)* |
 
-1. **Atualizar a main:** obter as alterações mais recentes do repositório remoto.
-2. **Criar uma branch:** iniciar uma linha de trabalho para uma tarefa específica.
-3. **Realizar as alterações:** modificar somente os arquivos necessários para a tarefa.
-4. **Testar:** verificar se as alterações funcionam conforme o esperado.
-5. **Fazer commit:** registrar as mudanças com uma mensagem padronizada.
-6. **Fazer push:** enviar a branch ao GitHub.
-7. **Abrir um Pull Request:** solicitar a revisão das alterações, tendo a `main` como destino.
-8. **Revisar:** verificar os arquivos, os commits, os testes e a descrição do PR.
-9. **Corrigir, se necessário:** realizar os ajustes solicitados na mesma branch e enviar os novos commits.
-10. **Integrar:** realizar o merge após as verificações necessárias e conforme as regras do repositório.
+> [!IMPORTANT]
+> 🛑 **Regra de ouro:** não faça alterações diretamente na `main` quando a tarefa exigir o fluxo de branches e Pull Requests.
 
-Não faça alterações diretamente na `main` quando a tarefa exigir o fluxo de branches e Pull Requests.
+---
 
-## 9. Como abrir um Pull Request
+## 9. Como Abrir um Pull Request
 
-1. Envie sua branch ao GitHub com push.
+### 9.1. Passo a passo
+
+1. Envie sua branch ao GitHub com `push`.
 2. Acesse a aba **Pull requests** do repositório.
 3. Clique em **New pull request**.
-4. Selecione `main` como base e sua branch como comparação.
-5. Informe um título claro.
-6. Descreva o que foi alterado e como foi testado.
+4. Selecione `main` como **base** e sua branch como **compare**.
+5. Informe um **título claro**.
+6. Descreva **o que foi alterado e como foi testado**.
 7. Confira os arquivos em **Files changed**.
-8. Crie o PR e solicite a revisão dos responsáveis.
+8. Crie o PR e solicite revisão dos responsáveis (**Reviewers**).
+9. Se pedirem correções, faça-as na mesma branch e envie novos commits. O PR é atualizado automaticamente.
 
-Se forem solicitadas correções, faça-as na mesma branch e envie novos commits. O PR será atualizado automaticamente.
+### 9.2. Recursos úteis no PR
 
-## 10. Revisão dos Pull Requests
+| Recurso | Descrição |
+|---|---|
+| 📝 **Draft Pull Request** | Abre o PR como rascunho enquanto o código está em construção, bloqueando o merge acidental. |
+| 🔗 **Vinculação de Issues** | Escrever `Closes #N` na descrição fecha a Issue automaticamente após o merge na `main`. |
+| 🔀 **Merge commit** | Mantém todos os commits e cria um commit de fusão. |
+| 🧽 **Squash and merge** | Unifica todos os commits da branch em um só na `main`. |
+| 📏 **Rebase and merge** | Reaplica os commits em linha reta. |
 
-Antes da integração, os responsáveis pela revisão devem conferir:
+---
 
-- Se o título e a descrição explicam a tarefa.
-- Se o nome da branch segue o padrão definido.
-- Se as mensagens de commit estão padronizadas.
-- Se os arquivos modificados são os esperados.
-- Se os testes necessários foram realizados.
-- Se não existem senhas, tokens ou informações secretas.
-- Se eventuais conflitos foram resolvidos.
-- Se as regras do repositório foram respeitadas.
+## 10. Revisão dos Pull Requests (Code Review)
 
-Caso existam problemas, solicite os ajustes antes de integrar as alterações.
+Antes da integração, os revisores devem conferir:
 
-## 11. Conflitos e problemas comuns
+- [ ] O título e a descrição explicam a tarefa.
+- [ ] O nome da branch segue o padrão `grupo-N/descricao-da-tarefa`.
+- [ ] As mensagens de commit estão padronizadas (`tipo: descricao curta`).
+- [ ] Os arquivos modificados são os esperados.
+- [ ] Os testes necessários foram realizados.
+- [ ] Não existem senhas, tokens ou informações secretas.
+- [ ] Eventuais conflitos foram resolvidos.
+- [ ] As regras do repositório foram respeitadas.
 
-### O que é um conflito?
+> [!TIP]
+> Havendo problemas, use **Request changes** na aba *Files changed* e solicite os ajustes antes de integrar. Você também pode comentar linhas específicas clicando no ícone **+** ao lado do número da linha, ou marcar arquivos já conferidos com a caixa **Viewed**.
 
-Um conflito acontece quando o Git não consegue combinar automaticamente alterações feitas em partes incompatíveis dos arquivos.
+---
 
-Para resolver:
-1. Identifique os arquivos em conflito.
-2. Compare as alterações realizadas.
+## 11. Conflitos e Problemas Comuns
+
+### 11.1. O que é um conflito?
+
+Ocorre quando o Git não consegue combinar automaticamente alterações em partes incompatíveis dos arquivos, marcadas no código assim:
+
+```diff
+<<<<<<< HEAD
+conteúdo da sua branch
+=======
+conteúdo da outra branch
+>>>>>>> outra-branch
+```
+
+**Como resolver:**
+
+1. Identifique os arquivos em conflito (`git status`).
+2. Compare as alterações de cada bloco.
 3. Converse com os integrantes envolvidos, se necessário.
-4. Combine o conteúdo correto e remova os marcadores de conflito.
+4. Combine o conteúdo correto e **remova todos os marcadores** (`<<<<<<<`, `=======`, `>>>>>>>`).
 5. Salve os arquivos e execute os testes necessários.
-6. Confira as alterações antes de concluir a integração.
+6. Confira as alterações antes de concluir a integração (`git add` e `git commit`).
 
-### A alteração não aparece no GitHub
+### 11.2. Problemas comuns
 
-Confira se o arquivo foi salvo, se as alterações foram reconhecidas pelo Git, se foi realizado o commit e se a branch foi enviada com push.
+<details>
+<summary><b>🕳️ A alteração não aparece no GitHub</b></summary>
 
-### Não consigo enviar alterações
+Confira, nesta ordem:
 
-Verifique se está na conta correta, se possui acesso de escrita e se a branch foi criada corretamente. Se necessário, procure o responsável pelo repositório.
+1. O arquivo foi salvo no editor (`Ctrl + S`)?
+2. O Git reconheceu as alterações (`git status`)?
+3. Foram feitos `git add` e `git commit`?
+4. A branch foi enviada com `git push`?
+5. Você selecionou a branch correta no site do GitHub?
 
-### O Pull Request mostra arquivos demais
+</details>
 
-Confira se a branch foi criada a partir da base correta e se contém apenas as alterações relacionadas à tarefa.
+<details>
+<summary><b>🚫 Não consigo enviar alterações</b></summary>
 
-## 12. Boas práticas e segurança
+- Verifique se está na conta correta e se possui acesso de escrita.
+- Verifique se a branch foi criada corretamente.
+- Se um colega de grupo subiu alterações na mesma branch antes de você, execute `git pull origin sua-branch` e tente o push novamente.
+- Se necessário, procure o responsável pelo repositório.
 
-- Trabalhe em uma branch específica para cada tarefa.
-- Atualize a base antes de iniciar uma nova branch.
-- Faça commits pequenos e com mensagens claras.
-- Revise as alterações antes de fazer commit e push.
-- Nunca envie senhas, tokens, chaves privadas ou arquivos `.env` com informações secretas.
-- Evite incluir arquivos temporários ou desnecessários.
-- Converse com os outros grupos antes de alterar arquivos compartilhados.
-- Teste as alterações antes de solicitar a integração.
-- Consulte o `PADROES_GIT.md` quando houver dúvidas sobre as regras.
+</details>
 
-## 13. README e materiais de apoio
+<details>
+<summary><b>📚 O Pull Request mostra arquivos demais</b></summary>
 
-O `README.md` é a porta de entrada do projeto. Ele deve apresentar o objetivo do PC Builder, as instruções de execução, a organização dos arquivos e as orientações para contribuir.
+Confira se a branch foi criada a partir da base correta (`main` atualizada) e se contém apenas as alterações relacionadas à tarefa do grupo.
 
-As apostilas e os materiais de apoio devem ficar na pasta definida pela equipe, utilizando nomes claros e uma organização que facilite a consulta. A estrutura real do repositório deve ser respeitada para evitar pastas duplicadas.
+</details>
+
+---
+
+## 12. Boas Práticas, Segurança e `.gitignore`
+
+| | Boa prática |
+|:-:|---|
+| 🌿 | Trabalhe em **uma branch específica para cada tarefa**. |
+| 🔄 | **Atualize a base** (`main`) antes de iniciar uma nova branch. |
+| ⚛️ | Faça **commits pequenos** e com mensagens claras. |
+| 🔎 | Revise com `git status` e `git diff` antes de commit e push. |
+| 💬 | **Converse com os outros grupos** antes de alterar arquivos compartilhados. |
+| 🧪 | **Teste localmente** antes de solicitar a integração. |
+| 📖 | Consulte o `PADROES_GIT.md` quando houver dúvidas. |
+
+> [!CAUTION]
+> 🔐 **Segurança:** nunca envie senhas, tokens, chaves privadas ou arquivos `.env` com informações secretas.
+
+**Uso do `.gitignore`:** evite incluir arquivos temporários ou desnecessários, mantendo-os listados no `.gitignore` na raiz do projeto:
+
+```gitignore
+.DS_Store
+Thumbs.db
+.vscode/
+node_modules/
+.env
+```
+
+---
+
+## 13. README e Materiais de Apoio
+
+- 📘 O `README.md` é a **porta de entrada** do projeto: apresenta o objetivo do PC Builder, as instruções de execução, a organização dos arquivos e as orientações para contribuir.
+- 🗂️ Apostilas e materiais de apoio ficam na pasta definida pela equipe, com nomes claros e organização que facilite a consulta.
+- 📐 Respeite a **estrutura real do repositório** para evitar pastas duplicadas.
+
+---
 
 ## 14. Deploy e GitHub Pages
 
-Deploy é o processo de disponibilizar uma versão da aplicação para que outras pessoas possam acessá-la.
+**Deploy** é o processo de disponibilizar uma versão da aplicação para que outras pessoas a acessem pelo navegador.
 
-O GitHub Pages pode ser uma opção para aplicações estáticas desenvolvidas com HTML, CSS e JavaScript, desde que a estrutura do projeto seja compatível e a equipe configure a publicação.
+O **GitHub Pages** pode ser uma opção para aplicações estáticas (HTML, CSS e JavaScript), desde que:
 
-O fluxo geral de publicação é:
+- a estrutura do projeto seja compatível (**caminhos relativos corretos** e atenção a maiúsculas/minúsculas nos nomes de arquivos);
+- a equipe configure a publicação.
 
-1. Confirmar com a equipe qual plataforma será utilizada.
-2. Garantir que a versão aprovada esteja integrada à branch de publicação definida.
-3. Configurar a origem e os caminhos dos arquivos.
-4. Aguardar a conclusão da publicação.
-5. Acessar a URL gerada e testar a aplicação.
-6. Corrigir problemas por meio de novas branches e Pull Requests.
+```mermaid
+flowchart LR
+    A["Confirmar plataforma<br/>com a equipe"] --> B["Versão aprovada<br/>integrada na main"]
+    B --> C["Configurar origem<br/>e caminhos"]
+    C --> D["Aguardar<br/>publicação"]
+    D --> E["Acessar a URL<br/>e testar"]
+    E --> F["Corrigir via nova<br/>branch + PR"]
+```
 
-**Importante:** o fato de o código estar no GitHub não significa que o site já esteja publicado. A utilização do GitHub Pages precisa ser confirmada e configurada pela equipe.
+> [!NOTE]
+> 📌 O fato de o código estar no GitHub **não** significa que o site já esteja publicado. O uso do GitHub Pages precisa ser confirmado e configurado pela equipe.
 
-## 15. Checklist antes de abrir um Pull Request
+---
 
-- [ ] Estou no repositório correto.
-- [ ] Minha branch segue o padrão definido pelo grupo.
+## 15. Checklist antes de Abrir um Pull Request
+
+- [ ] Estou no repositório correto (`pc-builder`).
+- [ ] Minha branch segue o padrão definido (`grupo-N/descricao-da-tarefa`).
 - [ ] Não realizei alterações diretamente na `main`.
-- [ ] Revisei os arquivos e as linhas modificadas.
+- [ ] Revisei os arquivos e as linhas modificadas (`git diff` e `git status`).
 - [ ] Executei os testes necessários.
-- [ ] As mensagens de commit estão claras.
+- [ ] As mensagens de commit estão claras e padronizadas (`tipo: descricao curta`).
 - [ ] Não incluí senhas ou arquivos desnecessários.
-- [ ] Enviei a branch correta ao GitHub.
+- [ ] Enviei a branch correta ao GitHub (`git push`).
 - [ ] O PR tem a `main` como destino.
 - [ ] A descrição explica as alterações e como foram testadas.
 
-## 16. Glossário
+---
+
+## 16. Glossário Técnico Expandido
 
 | Termo | Significado |
 |---|---|
-| Git | Sistema de controle de versões. |
-| GitHub | Plataforma online de hospedagem e colaboração. |
-| Repositório | Projeto acompanhado pelo Git. |
-| Clone | Cópia local vinculada ao repositório remoto. |
-| Commit | Registro de alterações no histórico. |
-| Branch | Linha de trabalho separada. |
-| `main` | Branch principal do projeto. |
-| Fetch | Busca informações sobre atualizações remotas. |
-| Pull | Busca e integra atualizações remotas. |
-| Push | Envia commits ao repositório remoto. |
-| Pull Request (PR) | Solicitação de revisão e integração de alterações. |
-| Merge | Integra alterações entre branches. |
-| Conflito | Alterações que precisam ser conciliadas manualmente. |
-| Deploy | Publicação da aplicação em um ambiente acessível. |
+| **Git** | Sistema de controle de versões local. |
+| **GitHub** | Plataforma online de hospedagem e colaboração. |
+| **Repositório** | Projeto acompanhado pelo Git (local ou remoto). |
+| **origin** | Apelido padrão do repositório remoto hospedado no GitHub. |
+| **Clone** | Cópia local vinculada ao repositório remoto. |
+| **Working Directory** | Pasta local onde os arquivos são editados no dia a dia. |
+| **Staging Area** | Área de preparação onde os arquivos são selecionados (`git add`) antes do commit. |
+| **Commit** | Registro de alterações selecionadas no histórico. |
+| **Hash (SHA-1)** | Identificador único gerado para cada commit. |
+| **Branch** | Linha de trabalho separada. |
+| **main** | Branch principal do projeto. |
+| **HEAD** | Ponteiro que indica a branch e o commit em que você está posicionado. |
+| **Fetch** | Busca informações sobre atualizações remotas sem integrá-las. |
+| **Pull** | Busca e integra atualizações remotas na branch atual. |
+| **Push** | Envia commits ao repositório remoto. |
+| **Pull Request (PR)** | Solicitação de revisão e integração de alterações. |
+| **Code Review** | Revisão técnica das alterações de um PR antes da integração. |
+| **Merge** | Integra alterações entre branches. |
+| **Conflito** | Alterações incompatíveis que precisam ser conciliadas manualmente. |
+| **Stash** | Gaveta temporária (`git stash`) que guarda edições locais sem precisar de commit. |
+| **.gitignore** | Arquivo que define quais pastas e arquivos temporários o Git deve ignorar. |
+| **Deploy** | Publicação da aplicação em um ambiente acessível. |
 
-## 17. Resumo do fluxo
+---
 
-**Atualizar a main → Criar branch → Alterar arquivos → Testar → Commit → Push → Pull Request → Revisão → Merge → Deploy, quando aplicável.**
+## 17. Resumo do Fluxo
 
-Este guia deve ser utilizado em conjunto com o arquivo `PADROES_GIT.md` e com as decisões atualizadas da equipe do PC Builder.
+```text
+Atualizar a main ➔ Criar branch ➔ Alterar arquivos ➔ Testar ➔ Commit ➔ Push
+        ➔ Pull Request ➔ Revisão ➔ Merge ➔ Deploy (quando aplicável)
+```
+
+<div align="center">
+
+---
+
+**⚡ PC Builder · Guia de Git & GitHub**
+
+</div>
