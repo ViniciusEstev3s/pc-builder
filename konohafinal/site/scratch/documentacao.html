@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Documentação Técnica — Konoha Hardware</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
+
+    @page {
+      size: A4;
+      margin: 18mm 16mm 18mm 16mm;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-size: 9.8pt;
+      line-height: 1.5;
+      color: #1a1a1a;
+      background: #ffffff;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* Utilitários de Quebra de Página */
+    .page-break {
+      page-break-before: always;
+    }
+    .avoid-break {
+      page-break-inside: avoid;
+    }
+
+    /* Cabeçalho de Capa / Topo */
+    .header-box {
+      border: 1px solid #e2e8f0;
+      border-left: 6px solid #ff6a13;
+      background: #fafafa;
+      padding: 24px;
+      border-radius: 8px;
+      margin-bottom: 24px;
+    }
+
+    .badge-top {
+      display: inline-block;
+      font-size: 7.5pt;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #ff6a13;
+      background: rgba(255, 106, 19, 0.1);
+      padding: 4px 10px;
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      font-size: 22pt;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      font-size: 11pt;
+      font-weight: 500;
+      color: #475569;
+      margin-bottom: 14px;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px 16px;
+      font-size: 8.5pt;
+      color: #334155;
+      border-top: 1px solid #e2e8f0;
+      padding-top: 12px;
+      margin-top: 12px;
+    }
+
+    .meta-item strong {
+      color: #0f172a;
+    }
+
+    /* Seções */
+    h2 {
+      font-size: 12.5pt;
+      font-weight: 700;
+      color: #0f172a;
+      border-bottom: 2px solid #ff6a13;
+      padding-bottom: 3px;
+      margin-top: 18px;
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
+      page-break-after: avoid;
+    }
+
+    h3 {
+      font-size: 10pt;
+      font-weight: 700;
+      color: #1e293b;
+      margin-top: 12px;
+      margin-bottom: 5px;
+      page-break-after: avoid;
+    }
+
+    p {
+      margin-bottom: 8px;
+      text-align: justify;
+    }
+
+    ul, ol {
+      margin-left: 18px;
+      margin-bottom: 8px;
+    }
+
+    li {
+      margin-bottom: 3px;
+    }
+
+    /* Tabelas */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0 16px 0;
+      font-size: 8.5pt;
+      page-break-inside: avoid;
+    }
+
+    th, td {
+      border: 1px solid #cbd5e1;
+      padding: 7px 9px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #f1f5f9;
+      color: #0f172a;
+      font-weight: 700;
+    }
+
+    tr:nth-child(even) td {
+      background: #f8fafc;
+    }
+
+    /* Blocos de Destaque */
+    .callout {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-left: 4px solid #3b82f6;
+      padding: 12px 14px;
+      border-radius: 6px;
+      margin: 12px 0;
+      font-size: 9pt;
+    }
+
+    .callout-highlight {
+      background: #fff7ed;
+      border: 1px solid #ffedd5;
+      border-left: 4px solid #ff6a13;
+      padding: 12px 14px;
+      border-radius: 6px;
+      margin: 12px 0;
+      font-size: 9pt;
+    }
+
+    .callout strong {
+      color: #0f172a;
+    }
+
+    /* Código e Diretórios */
+    code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 8pt;
+      background: #f1f5f9;
+      color: #0f172a;
+      padding: 1px 4px;
+      border-radius: 3px;
+    }
+
+    pre {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 7.8pt;
+      background: #0f172a;
+      color: #f8fafc;
+      padding: 12px;
+      border-radius: 6px;
+      overflow-x: auto;
+      margin: 10px 0 14px 0;
+      line-height: 1.4;
+      page-break-inside: avoid;
+    }
+
+    /* Grade de Integrantes */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin: 12px 0;
+      page-break-inside: avoid;
+    }
+
+    .team-card {
+      border: 1px solid #e2e8f0;
+      background: #f8fafc;
+      padding: 10px 12px;
+      border-radius: 6px;
+      font-size: 8.5pt;
+    }
+
+    .team-card-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .team-initials {
+      display: inline-block;
+      width: 26px;
+      height: 26px;
+      line-height: 26px;
+      text-align: center;
+      background: #ff6a13;
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 8pt;
+      border-radius: 4px;
+    }
+
+    .team-name {
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .team-role {
+      font-size: 7.8pt;
+      color: #ff6a13;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .team-desc {
+      color: #475569;
+      font-size: 8pt;
+      line-height: 1.35;
+    }
+
+    /* Bloco executável */
+    .exec-box {
+      page-break-inside: avoid;
+    }
+
+    .badge-success {
+      background: #dcfce7;
+      color: #15803d;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CAPA / CABEÇALHO -->
+  <div class="header-box">
+    <div class="badge-top">Engenharia de Software · Projeto Acadêmico</div>
+    <h1>Documentação Técnica e de Arquitetura</h1>
+    <div class="subtitle">Plataforma Educacional de Arquitetura da Computação e Simulador de Montagem de PC</div>
+    <div class="meta-grid">
+      <div class="meta-item"><strong>Projeto:</strong> Konoha Hardware (v1.0.0)</div>
+      <div class="meta-item"><strong>Ambiente Padrão:</strong> Google Antigravity IDE</div>
+      <div class="meta-item"><strong>Público-Alvo:</strong> Estudantes e Jovens (15 a 24 anos)</div>
+      <div class="meta-item"><strong>Status:</strong> Concluído, Validado & Testado (100%)</div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 1: EQUIPE -->
+  <h2>1. Equipe de Desenvolvimento e Atribuições</h2>
+  <p>A equipe de desenvolvimento é formada por 6 integrantes, cada qual responsável pela consolidação e integração técnica dos seus respectivos módulos no Google Antigravity IDE:</p>
+
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="team-card-header">
+        <span class="team-initials">LF</span>
+        <span class="team-name">Leonardo Fioramonte de Oliveira</span>
+      </div>
+      <div class="team-role">Líder Técnico & Integração de Dados</div>
+      <div class="team-desc">Arquitetura central em Next.js/TypeScript, integração do catálogo com 191 peças reais, padronização do ambiente no Google Antigravity IDE e build estático.</div>
+    </div>
+
+    <div class="team-card">
+      <div class="team-card-header">
+        <span class="team-initials">BM</span>
+        <span class="team-name">Breno Martinho Denis</span>
+      </div>
+      <div class="team-role">Dev Front-End: Telas Iniciais & Visual</div>
+      <div class="team-desc">Design System em Tailwind CSS, tipografia de alto contraste, telas de entrada, vitrines de computadores pré-montados e acessibilidade visual.</div>
+    </div>
+
+    <div class="team-card">
+      <div class="team-card-header">
+        <span class="team-initials">EF</span>
+        <span class="team-name">Eduardo Francisco Bernardes da Silva</span>
+      </div>
+      <div class="team-role">Dev Front-End: Catálogo de Componentes</div>
+      <div class="team-desc">Interface do Montador em 8 etapas (<code>#montar</code>), renderização dos cards com fotografias reais, filtros em tempo real e tags técnicas.</div>
+    </div>
+
+    <div class="team-card">
+      <div class="team-card-header">
+        <span class="team-initials">GB</span>
+        <span class="team-name">Giovane Betez Romo</span>
+      </div>
+      <div class="team-role">Dev Front-End: Resumo & Orçamento</div>
+      <div class="team-desc">Relatório final de resultado (<code>#resultado</code>), cálculo de consumo elétrico total, detalhamento gráfico de gastos e persistência no <code>localStorage</code>.</div>
+    </div>
+
+    <div class="team-card">
+      <div class="team-card-header">
+        <span class="team-initials">EB</span>
+        <span class="team-name">Edwin Bono Sanches</span>
+      </div>
+      <div class="team-role">Dev de Lógica & Compatibilidade</div>
+      <div class="team-desc">Motor matemático de compatibilidade de hardware, validação estrita de soquetes, suporte híbrido DDR4/DDR5, cálculo de TDP e estimativa de FPS em jogos.</div>
+    </div>
+
+    <div class="team-card">
+      <div class="team-card-header">
+        <span class="team-initials">GR</span>
+        <span class="team-name">Gabriel Rocha Martins</span>
+      </div>
+      <div class="team-role">QA (Testes), Integração & 3D</div>
+      <div class="team-desc">Suíte completa de testes E2E automatizados com Playwright (44 cenários aprovados), integração da cena 3D interativa e garantia de qualidade contínua.</div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 2: EVOLUÇÃO -->
+  <h2>2. Evolução: Planejamento Inicial vs. Sistema Final</h2>
+  <p>O documento inicial (entregue em 16/10) previa uma arquitetura elementar em JavaScript modular e arquivos estáticos soltos, com apenas 7 categorias abstratas e peças genéricas. Durante o desenvolvimento, o projeto foi elevado para o <strong>Konoha Hardware</strong> — unindo a pedagogia do <em>Anatomia do PC</em> com a precisão comercial e técnica de um montador profissional de ponta:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 25%;">Critério</th>
+        <th style="width: 35%;">Primeiro Planejamento (16/10)</th>
+        <th style="width: 40%;">Sistema Final Entregue (Konoha Hardware)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Stack Base</strong></td>
+        <td>JavaScript ES6 puro, HTML5, CSS3, sem framework.</td>
+        <td><strong>Next.js 15 (App Router)</strong>, React 19, TypeScript 5.9, Tailwind CSS.</td>
+      </tr>
+      <tr>
+        <td><strong>3D e Interatividade</strong></td>
+        <td>Não previsto (apenas formulário web plano 2D).</td>
+        <td><strong>Three.js + React Three Fiber:</strong> Visão Explodida e <strong>Montagem Manual com Bancada 3D</strong> ("Arrastar e Encaixar").</td>
+      </tr>
+      <tr>
+        <td><strong>Catálogo de Peças</strong></td>
+        <td>7 categorias genéricas solicitadas em planilha.</td>
+        <td><strong>8 categorias essenciais</strong>, totalizando <strong>191 componentes reais</strong> com especificações detalhadas de mercado.</td>
+      </tr>
+      <tr>
+        <td><strong>Fidelidade Visual</strong></td>
+        <td>Links externos ou imagens ilustrativas avulsas.</td>
+        <td><strong>174 fotografias reais de alta fidelidade</strong> (1:1), cobrindo variações reais de carenagens (ex.: 4 modelos reais de RTX 2060).</td>
+      </tr>
+      <tr>
+        <td><strong>Regras de Compatibilidade</strong></td>
+        <td>4 checagens simples (Soquete, DDR, Watts, Gabinete).</td>
+        <td><strong>Motor estrito em tempo real:</strong> 6 soquetes de mercado, DDR4/DDR5 híbrido (Intel 12ª-14ª), TDP do cooler vs CPU, Watts com margem 80 Plus e dimensão da GPU.</td>
+      </tr>
+      <tr>
+        <td><strong>PCs Prontos</strong></td>
+        <td>Não detalhado.</td>
+        <td><strong>13 PCs Prontos balanceados</strong> (7 Gamer e 6 Trabalho) estritamente ordenados do menor para o maior preço, com botão para personalizar no montador.</td>
+      </tr>
+      <tr>
+        <td><strong>Garantia de Qualidade</strong></td>
+        <td>Checklist manual em Markdown.</td>
+        <td><strong>44 testes E2E automatizados com Playwright</strong> em navegador real Chromium + checagem de tipos estrita (0 erros de compilação).</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="page-break"></div>
+
+  <!-- SEÇÃO 3: STACK E ARQUITETURA -->
+  <h2>3. Stack Tecnológica e Arquitetura de Software</h2>
+  <p>A arquitetura foi estruturada para garantir velocidade de carregamento, segurança de tipos, componentes reutilizáveis e exportação estática de alto desempenho:</p>
+
+  <div class="callout">
+    <strong>Stack Tecnológica Consolidada:</strong><br>
+    • <strong>Next.js 15 & React 19:</strong> Roteamento via Hash SPA (<code>#inicio</code>, <code>#montar</code>, <code>#resultado</code>, <code>#aprender</code>, <code>#gamer</code>, <code>#trabalho</code>, <code>#quiz</code>, <code>#equipe</code>) compatível com qualquer servidor estático.<br>
+    • <strong>TypeScript 5.9:</strong> Tipagem estrita de hardware, interfaces rígidas e zero erros em <code>tsc --noEmit</code>.<br>
+    • <strong>Three.js, React Three Fiber & Drei:</strong> Renderização 3D com aceleração WebGL, materiais PBR e drag-and-drop tridimensional.<br>
+    • <strong>Tailwind CSS 3.4 & Fontsource:</strong> Design responsivo e moderno voltado ao público jovem com as fontes <em>Unbounded</em>, <em>Manrope</em> e <em>JetBrains Mono</em>.<br>
+    • <strong>Playwright 1.63:</strong> Automação de testes ponta a ponta sem intervenção manual.
+  </div>
+
+  <h3>Estrutura de Diretórios do Projeto</h3>
+  <pre>
+konoha-hardware/
+├── app/                          # Rotas Next.js App Router, layout e fontes
+├── components/
+│   ├── montador/                 # Montador (8 etapas), Resultado e ConferirPecas
+│   ├── telas/                    # Telas modulares (Inicio, Aprender, PcGamer, PcTrabalho, Quiz...)
+│   ├── three/                    # Cenas 3D: GamerChassis3D, Modelo, Bancada e ExplodedChassis
+│   └── ui/                       # Modais seguros, avisos/toasts, cabeçalho e rodapé
+├── lib/
+│   ├── konoha/                   # Núcleo de lógica pura
+│   │   ├── pecas.ts              # Catálogo com 191 componentes reais
+│   │   ├── compatibilidade.ts    # Motor de regras de compatibilidade
+│   │   ├── desempenho.ts         # Cálculo dinâmico de FPS e produtividade
+│   │   ├── pcs-prontos.ts        # 13 configurações pré-montadas e equipe
+│   │   └── quiz.ts               # 12 temas de Arquitetura da Computação
+│   └── montagem.ts               # Estado reativo do usuário com histórico e localStorage
+├── public/img/pecas/reais/       # 174 fotografias reais de alta resolução
+├── tests/fluxos.mjs              # Suíte oficial de testes E2E (44 cenários)
+└── DOCUMENTACAO.md               # Documentação técnica original em Markdown
+  </pre>
+
+  <!-- SEÇÃO 4: CATÁLOGO E IMAGENS REAIS -->
+  <h2>4. Catálogo de Peças Reais e Correspondência de Imagens</h2>
+  <p>O catálogo da aba <strong>“Montar seu PC”</strong> foi abastecido com base em dados técnicos reais do mercado brasileiro, totalizando <strong>191 componentes cadastrados</strong> em 8 categorias essenciais e <strong>174 fotografias autênticas</strong>:</p>
+
+  <ul>
+    <li><strong>Processadores (42 modelos):</strong> AMD AM4 (Ryzen 3000/4000/5000), AMD AM5 (Ryzen 7000/8000/9000), Intel LGA 1200 (10ª/11ª gen), Intel LGA 1700 (12ª/13ª/14ª gen), Intel LGA 1851 (Core Ultra 200S) e Intel Xeon LGA 2011-3 (X99).</li>
+    <li><strong>Placas-Mãe (37 modelos):</strong> Chipsets A320, B450, B550, X570, A620, B650, X670E, X870, H410, B460, H510, B560, H610, B660, B760, Z690, Z790, Z890 e X99 (nos formatos Mini-ITX, Micro-ATX e ATX).</li>
+    <li><strong>Memória RAM (14 modelos/kits):</strong> Módulos e kits de 8GB a 64GB em DDR4 e DDR5, incluindo memórias de alta frequência e ECC Registradas para Xeon.</li>
+    <li><strong>Placas de Vídeo (30 modelos):</strong> Família GeForce (GTX 1650 até RTX 4090) e Radeon (RX 580 até RX 7900 XTX).</li>
+    <li><strong>Armazenamento (16 modelos):</strong> SSDs NVMe M.2 Gen3/Gen4/Gen5, SSDs SATA 2.5" e HDDs de 3.5".</li>
+    <li><strong>Fontes de Alimentação (34 modelos):</strong> De 400W a 1600W com certificações 80 Plus White, Bronze, Gold e Platinum.</li>
+    <li><strong>Gabinetes (3 modelos):</strong> Chassi compacto Micro-ATX, Mid Tower e Aquário com fluxo de ar planejado.</li>
+    <li><strong>Sistemas de Refrigeração (15 modelos):</strong> Air Coolers torre (Cooler Master Hyper 212, DeepCool AK400/AK620) e Water Coolers AIO de 240mm e 360mm.</li>
+  </ul>
+
+  <div class="callout-highlight">
+    <strong>Garantia de Fidelidade Visual — Exemplo da NVIDIA GeForce RTX 2060:</strong><br>
+    Em total conformidade com a exigência de não utilizar imagens genéricas, foram catalogadas e associadas 4 fotografias reais distintas para cada uma das variantes de fabricantes da RTX 2060:
+    <ul>
+      <li><strong>ASUS Dual RTX 2060 EVO:</strong> 2 ventoinhas axial-tech de pás unidas e backplate espesso.</li>
+      <li><strong>MSI RTX 2060 Gaming Z:</strong> Ventoinhas TORX 3.0, acabamento cinza metálico e Mystic Light.</li>
+      <li><strong>Gigabyte RTX 2060 WindForce OC:</strong> Rotação alternada de 90mm e estética angular.</li>
+      <li><strong>Zotac Gaming RTX 2060 Twin Fan:</strong> Formato compacto de duplo slot com lâminas curvas.</li>
+    </ul>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- SEÇÃO 5: COMPATIBILIDADE -->
+  <h2>5. Motor Avançado de Compatibilidade de Hardware</h2>
+  <p>O arquivo <code>lib/konoha/compatibilidade.ts</code> opera como o cérebro validador da aplicação. Cada peça escolhida dispara uma série de testes matemáticos e físicos automáticos:</p>
+
+  <ol>
+    <li><strong>Soquetes de Processador e Placa-Mãe:</strong> Validação bidirecional estrita cobrindo 6 plataformas de mercado (AM4, AM5, LGA1200, LGA1700, LGA1851 e LGA2011-3).</li>
+    <li><strong>Controlador de Memória Híbrido:</strong> Função <code>cpuAceitaRam</code> identifica processadores Intel de 12ª, 13ª e 14ª geração com suporte duplo (DDR4 e DDR5), validando o tipo exigido pelos slots físicos da placa-mãe.</li>
+    <li><strong>Dissipação Térmica (TDP):</strong> Compara o TDP máximo dissipado pelo Cooler com a emissão térmica da CPU sob carga de trabalho.</li>
+    <li><strong>Dimensionamento Elétrico com Margem de Segurança:</strong> Soma a potência exigida por CPU, GPU, ventoinhas e discos, confrontando com a potência rotulada da fonte e recomendando folga técnica de 20% a 30%.</li>
+    <li><strong>Fator de Forma e Comprimento Físico:</strong> Garante que placas-mãe ATX não sejam instaladas em gabinetes Micro-ATX, além de confrontar o comprimento da placa de vídeo (em mm) com o espaço disponível no gabinete.</li>
+  </ol>
+
+  <!-- SEÇÃO 6: FUNCIONALIDADES INOVADORAS -->
+  <h2>6. Funcionalidades Inovadoras</h2>
+
+  <h3>6.1. Montagem Manual 3D ("Arrastar e Encaixar" / Bancada 3D)</h3>
+  <p>No visualizador 3D (<code>GamerChassis3D.tsx</code> e <code>Modelo.tsx</code>), o usuário tem uma experiência prática de bancada:</p>
+  <ul>
+    <li><strong>Modo Bancada:</strong> O botão <em>"Desmontar p/ bancada"</em> move as peças removíveis para uma bancada de testes tridimensional ao lado do gabinete.</li>
+    <li><strong>Arrastar com o Mouse:</strong> O usuário seleciona e arrasta o componente tridimensional diretamente para o interior do gabinete.</li>
+    <li><strong>Guias Luminosas (<code>&lt;GuiaSlotEncaixe&gt;</code>):</strong> Conforme a peça se aproxima do soquete, anéis luminosos indicam o local exato do encaixe.</li>
+    <li><strong>Travamento de Câmera:</strong> Durante o arraste, os controles de órbita (<code>OrbitControls</code>) são temporariamente travados para proporcionar controle manual fino.</li>
+    <li><strong>Validação de Ordem Física e Hardware:</strong> O simulador impede a montagem de peças sem sustentação (a placa-mãe precisa estar montada antes de encaixar CPU ou RAM) e recusa peças incompatíveis através da rotina <code>validarEncaixe3D</code> (ex.: recusa CPU AM5 em placa AM4 com aviso explicativo imediato).</li>
+  </ul>
+
+  <h3>6.2. Vitrines de PCs Gamer e Trabalho Ordenadas por Preço</h3>
+  <p>Todos os computadores pré-configurados foram calibrados e exibidos em ordem estritamente crescente de valor:</p>
+  <ul>
+    <li><strong>PCs Gamer (7 opções):</strong> De R$ 2.419,30 (Kit Xeon X99 + RX 580) até R$ 17.599,30 (Ryzen 7 9800X3D + RTX 4090).</li>
+    <li><strong>PCs para Trabalho (6 opções):</strong> De R$ 1.699,40 (Athlon 3000G Escritório) até R$ 17.099,30 (Core Ultra 9 285K + RTX 4090 Workstation).</li>
+  </ul>
+
+  <h3>6.3. Estimativa Dinâmica de FPS e Núcleo Educativo</h3>
+  <ul>
+    <li><strong>Previsão de FPS em Jogos:</strong> Estimativa em 1080p e 1440p para 6 jogos clássicos e modernos (CS2, Valorant, GTA V, Cyberpunk 2077, Fortnite, Warzone).</li>
+    <li><strong>Anatomia 3D (Exploded View):</strong> Desmonte tridimensional da máquina acoplado ao scroll da página.</li>
+    <li><strong>Quiz de Arquitetura da Computação:</strong> 12 temas fundamentados no modelo de Von Neumann com suporte total ao teclado.</li>
+  </ul>
+
+  <!-- SEÇÃO 7: VERSIONAMENTO E GITHUB -->
+  <h2>7. Versionamento e Padrões de Código (GitHub)</h2>
+  <p>O desenvolvimento seguiu rigorosamente os padrões de ramificação e convenções semânticas de commit:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Integrante</th>
+        <th>Responsabilidade</th>
+        <th>Nome da Branch</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Leonardo</td>
+        <td>Base de Dados e Estrutura</td>
+        <td><code>grupo-1/base-dados</code></td>
+      </tr>
+      <tr>
+        <td>Breno</td>
+        <td>Interface Inicial e Navegação</td>
+        <td><code>grupo-1/telas-iniciais</code></td>
+      </tr>
+      <tr>
+        <td>Eduardo</td>
+        <td>Catálogo e Seleção</td>
+        <td><code>grupo-1/catalogo-pecas</code></td>
+      </tr>
+      <tr>
+        <td>Giovane</td>
+        <td>Resumo e Exportação</td>
+        <td><code>grupo-1/resumo-orcamento</code></td>
+      </tr>
+      <tr>
+        <td>Edwin</td>
+        <td>Regras de Compatibilidade</td>
+        <td><code>grupo-1/regras-compatibilidade</code></td>
+      </tr>
+      <tr>
+        <td>Gabriel</td>
+        <td>Testes e Qualidade (QA)</td>
+        <td><code>grupo-1/testes-qa</code></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <strong>Convenção Obrigatória de Commits:</strong><br>
+    • <code>feat:</code> Novas funcionalidades adicionadas (ex: <code>feat: implementa bancada 3d com drag and snap</code>)<br>
+    • <code>fix:</code> Correções de falhas ou bugs (ex: <code>fix: corrige ordenacao de precos nos pcs prontos</code>)<br>
+    • <code>docs:</code> Documentação técnica e relatórios (ex: <code>docs: atualiza documentacao tecnica oficial</code>)<br>
+    • <code>chore:</code> Tarefas de build, scripts ou dependências (ex: <code>chore: adiciona caminhos relativos para out</code>)
+  </div>
+
+  <!-- SEÇÃO 8: QUALIDADE E TESTES -->
+  <h2>8. Garantia da Qualidade e Resultados dos Testes</h2>
+
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="team-name">Checagem de Tipos (TypeScript)</div>
+      <div class="team-role"><span class="badge badge-success">APROVADO (0 ERROS)</span></div>
+      <div class="team-desc">Execução de <code>npx tsc --noEmit</code> com modo estrito ativo em todas as classes, interfaces e funções de compatibilidade.</div>
+    </div>
+
+    <div class="team-card">
+      <div class="team-name">Build Estático de Produção</div>
+      <div class="team-role"><span class="badge badge-success">APROVADO (0 ERROS)</span></div>
+      <div class="team-desc">Execução de <code>npm run build:relativo</code> gerando a pasta estática <code>out/</code> pronta para hospedagem autônoma ou GitHub Pages.</div>
+    </div>
+
+    <div class="team-card">
+      <div class="team-name">Suíte Oficial E2E (Playwright)</div>
+      <div class="team-role"><span class="badge badge-success">44 APROVADOS / 0 FALHAS</span></div>
+      <div class="team-desc">Validação de fluxo de montagem das 8 peças, avanços automáticos, confirmações de limpeza, persistência no recarregamento, filtros de incompatibilidade e acessibilidade.</div>
+    </div>
+
+    <div class="team-card">
+      <div class="team-card-header">
+        <span class="team-name">Validação 3D e Fotos Reais</span>
+      </div>
+      <div class="team-role"><span class="badge badge-success">7 APROVADOS / 0 FALHAS</span></div>
+      <div class="team-desc">Verificação de carregamento de 100% das 42 imagens de CPU no navegador (<code>naturalWidth &gt; 0</code>), ordenação de preços e bloqueio 3D de peças incompatíveis.</div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 9: EXECUÇÃO LOCAL -->
+  <div class="exec-box">
+    <h2>9. Instruções de Execução do Projeto</h2>
+    <pre>
+# 1. Instalar as dependências do ecossistema
+npm install
+
+# 2. Executar em modo de desenvolvimento local (http://localhost:3000)
+npm run dev
+
+# 3. Gerar a compilação de produção com caminhos relativos (pasta out/)
+npm run build:relativo
+
+# 4. Executar a suíte de testes de ponta a ponta
+npm run test:fluxos
+    </pre>
+  </div>
+
+  <p style="font-size: 8pt; color: #64748b; text-align: center; margin-top: 24px; border-top: 1px solid #e2e8f0; padding-top: 10px;">
+    Documento oficial homologado pela Equipe de Desenvolvimento do Konoha Hardware no Google Antigravity IDE.
+  </p>
+
+</body>
+</html>

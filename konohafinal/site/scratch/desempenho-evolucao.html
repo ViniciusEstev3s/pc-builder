@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Relatório de Desempenho, Evolução e Inovação — Konoha Hardware</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
+
+    @page {
+      size: A4;
+      margin: 18mm 16mm 18mm 16mm;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-size: 9.5pt;
+      line-height: 1.48;
+      color: #1a1a1a;
+      background: #ffffff;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .page-break {
+      page-break-before: always;
+    }
+    .avoid-break {
+      page-break-inside: avoid;
+    }
+
+    /* Cabeçalho Executivo */
+    .header-box {
+      border: 1px solid #e2e8f0;
+      border-left: 6px solid #ff6a13;
+      background: #fafafa;
+      padding: 22px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    .badge-top {
+      display: inline-block;
+      font-size: 7.5pt;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #ff6a13;
+      background: rgba(255, 106, 19, 0.1);
+      padding: 4px 10px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      font-size: 20pt;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      font-size: 10.2pt;
+      font-weight: 500;
+      color: #475569;
+      margin-bottom: 12px;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 6px 16px;
+      font-size: 8.5pt;
+      color: #334155;
+      border-top: 1px solid #e2e8f0;
+      padding-top: 10px;
+      margin-top: 10px;
+    }
+
+    .meta-item strong {
+      color: #0f172a;
+    }
+
+    /* Seções */
+    h2 {
+      font-size: 12pt;
+      font-weight: 700;
+      color: #0f172a;
+      border-bottom: 2px solid #ff6a13;
+      padding-bottom: 3px;
+      margin-top: 15px;
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+      page-break-after: avoid;
+    }
+
+    h3 {
+      font-size: 9.8pt;
+      font-weight: 700;
+      color: #1e293b;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      page-break-after: avoid;
+    }
+
+    p {
+      margin-bottom: 6px;
+      text-align: justify;
+    }
+
+    ul, ol {
+      margin-left: 18px;
+      margin-bottom: 6px;
+    }
+
+    li {
+      margin-bottom: 2px;
+    }
+
+    /* Tabelas */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 8px 0 12px 0;
+      font-size: 8.3pt;
+      page-break-inside: avoid;
+    }
+
+    th, td {
+      border: 1px solid #cbd5e1;
+      padding: 5px 7px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #f1f5f9;
+      color: #0f172a;
+      font-weight: 700;
+    }
+
+    tr:nth-child(even) td {
+      background: #f8fafc;
+    }
+
+    /* Destaques e Callouts */
+    .callout {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-left: 4px solid #3b82f6;
+      padding: 8px 10px;
+      border-radius: 6px;
+      margin: 8px 0;
+      font-size: 8.6pt;
+      page-break-inside: avoid;
+    }
+
+    .callout-highlight {
+      background: #fff7ed;
+      border: 1px solid #ffedd5;
+      border-left: 4px solid #ff6a13;
+      padding: 8px 10px;
+      border-radius: 6px;
+      margin: 8px 0;
+      font-size: 8.6pt;
+      page-break-inside: avoid;
+    }
+
+    .callout-green {
+      background: #f0fdf4;
+      border: 1px solid #dcfce7;
+      border-left: 4px solid #16a34a;
+      padding: 8px 10px;
+      border-radius: 6px;
+      margin: 8px 0;
+      font-size: 8.6pt;
+      page-break-inside: avoid;
+    }
+
+    /* Código */
+    code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 7.8pt;
+      background: #f1f5f9;
+      color: #0f172a;
+      padding: 1px 4px;
+      border-radius: 3px;
+    }
+
+    pre {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 7.4pt;
+      background: #0f172a;
+      color: #f8fafc;
+      padding: 8px 10px;
+      border-radius: 6px;
+      overflow-x: auto;
+      margin: 6px 0 10px 0;
+      line-height: 1.34;
+      page-break-inside: avoid;
+    }
+
+    /* Grades de Cards */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin: 8px 0;
+      page-break-inside: avoid;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin: 8px 0;
+      page-break-inside: avoid;
+    }
+
+    .card-box {
+      border: 1px solid #e2e8f0;
+      background: #f8fafc;
+      padding: 8px 10px;
+      border-radius: 6px;
+      font-size: 8.3pt;
+    }
+
+    .card-title {
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 2px;
+    }
+
+    .stat-number {
+      font-size: 14pt;
+      font-weight: 800;
+      color: #ff6a13;
+      line-height: 1.1;
+      margin-bottom: 2px;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 7.2pt;
+      font-weight: 600;
+      padding: 2px 5px;
+      border-radius: 3px;
+      background: #e2e8f0;
+      color: #334155;
+    }
+
+    .badge-green {
+      background: #dcfce7;
+      color: #15803d;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CAPA / CABEÇALHO -->
+  <div class="header-box">
+    <div class="badge-top">Engenharia de Software · Relatório Técnico Oficial</div>
+    <h1>Relatório de Desempenho, Evolução e Inovação</h1>
+    <div class="subtitle">Análise Comparativa com Projetos Anteriores, Desempenho do Sistema, Evolução do 3D e Gamificação</div>
+    <div class="meta-grid">
+      <div class="meta-item"><strong>Projeto:</strong> Konoha Hardware (v1.0.0 / v2.0)</div>
+      <div class="meta-item"><strong>Ambiente Padrão:</strong> Google Antigravity IDE</div>
+      <div class="meta-item"><strong>Equipe:</strong> Leonardo, Breno, Eduardo, Giovane, Edwin, Gabriel</div>
+      <div class="meta-item"><strong>Qualidade:</strong> 51 Testes E2E Aprovados (100%) · 0 Erros TS</div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 1: EVOLUÇÃO E COMPARATIVO COM PROJETOS ANTERIORES -->
+  <h2>1. Evolução Histórica e Comparativo com Projetos Anteriores</h2>
+  <p>O <strong>Konoha Hardware</strong> é o resultado da fusão e aprimoramento de dois projetos acadêmicos anteriores desenvolvidos pela equipe: o <strong>Anatomia do PC</strong> (focado em conceitos educativos) e o <strong>Konoha Hardware Original</strong> (focado no montador 2D). A tabela abaixo detalha a superação dos gargalos anteriores:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 20%;">Área de Análise</th>
+        <th style="width: 26%;">Projeto 1: Anatomia do PC</th>
+        <th style="width: 26%;">Projeto 2: Konoha Original</th>
+        <th style="width: 28%;">Konoha Hardware Integrado (Atual)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Arquitetura & Stack</strong></td>
+        <td>Next.js básico, React 18, sem catálogo real.</td>
+        <td>HTML5, CSS3, JS Vanilla sem tipagem ou framework.</td>
+        <td><strong>Next.js 15 (App Router), React 19, TypeScript 5.9 estrito</strong> e Tailwind CSS.</td>
+      </tr>
+      <tr>
+        <td><strong>Visualizador 3D</strong></td>
+        <td>Passivo: "Exploded view" acoplada à rolagem da página.</td>
+        <td>Cena isolada simples na aba gamer (apenas rotação).</td>
+        <td><strong>Simulador de Montagem Física:</strong> Bancada 3D, arraste manual, guias de luz e validação física.</td>
+      </tr>
+      <tr>
+        <td><strong>Catálogo de Hardware</strong></td>
+        <td>Peças conceituais sem preços ou lojas.</td>
+        <td>Peças genéricas em arquivo JSON simples.</td>
+        <td><strong>191 peças reais</strong> com dados autênticos de mercado, TDP, dimensões e preços em R$.</td>
+      </tr>
+      <tr>
+        <td><strong>Fidelidade Visual</strong></td>
+        <td>Ilustrações estáticas.</td>
+        <td>Imagens soltas de baixa resolução.</td>
+        <td><strong>174 fotos reais (1:1)</strong>, com 4 variantes reais da RTX 2060 (ASUS, MSI, Gigabyte, Zotac).</td>
+      </tr>
+      <tr>
+        <td><strong>Compatibilidade</strong></td>
+        <td>Verificador avulso manual.</td>
+        <td>Checagens condicionais básicas de texto.</td>
+        <td><strong>Motor matemático estrito:</strong> 6 soquetes, RAM DDR4/DDR5 híbrida, TDP de cooler e fonte 80 Plus.</td>
+      </tr>
+      <tr>
+        <td><strong>Estimativa de Jogos</strong></td>
+        <td>Não possuía.</td>
+        <td>Relatório simples estático.</td>
+        <td><strong>Benchmark dinâmico de FPS</strong> para 30 GPUs em 6 jogos modernos (1080p e 1440p).</td>
+      </tr>
+      <tr>
+        <td><strong>Garantia de Qualidade</strong></td>
+        <td>Testes manuais ocasionais.</td>
+        <td>Sem testes automatizados.</td>
+        <td><strong>51 testes E2E Playwright automatizados (100% de sucesso)</strong> e 0 erros TypeScript.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- SEÇÃO 2: MÉTRICAS DE DESEMPENHO DO SISTEMA -->
+  <h2>2. Métricas de Desempenho e Engenharia do Sistema</h2>
+
+  <div class="grid-3">
+    <div class="card-box">
+      <div class="stat-number">60 FPS</div>
+      <div class="card-title">Taxa de Quadros no 3D</div>
+      <p style="font-size: 7.8pt; color: #475569; margin: 0;">Execução fluida no Three.js / React Three Fiber com suporte a WebGL e SwiftShader.</p>
+    </div>
+    <div class="card-box">
+      <div class="stat-number">100%</div>
+      <div class="card-title">Integridade de Imagens</div>
+      <p style="font-size: 7.8pt; color: #475569; margin: 0;">Todas as 174 fotos reais carregam no navegador com <code>naturalWidth &gt; 0</code>.</p>
+    </div>
+    <div class="card-box">
+      <div class="stat-number">51 / 51</div>
+      <div class="card-title">Testes E2E Aprovados</div>
+      <p style="font-size: 7.8pt; color: #475569; margin: 0;">Suíte completa no Playwright validando 8 etapas, montagem 3D e compatibilidade.</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>Destaques de Performance e Engenharia:</strong><br>
+    • <strong>Build Estático Otimizado:</strong> O site é compilado via <code>npm run build:relativo</code>, gerando arquivos estáticos puros na pasta <code>out/</code> com suporte a caminhos relativos para hospedagem autônoma ou GitHub Pages.<br>
+    • <strong>Calibração Dinâmica de FPS (<code>obterBenchmarkGpu</code>):</strong> Desenvolvido em <code>desempenho.ts</code>, cruza o poder da GPU e CPU para projetar taxas reais de quadros no CS2, Valorant, GTA V, Cyberpunk 2077, Fortnite e Warzone.<br>
+    • <strong>Dimensionamento Elétrico Inteligente:</strong> O sistema soma a potência real dos componentes e sugere fontes com folga técnica recomendada de <strong>20% a 30%</strong> dentro da curva de eficiência 80 Plus.
+  </div>
+
+  <!-- SEÇÃO 3: EVOLUÇÃO DO VISUALIZADOR 3D -->
+  <h2>3. A Evolução e Melhora das Funções do Visualizador 3D</h2>
+  <p>A transição de um visualizador 3D passivo para um <strong>Simulador Interativo de Montagem Física</strong> representou o maior salto tecnológico do projeto. Os componentes <code>GamerChassis3D.tsx</code> e <code>Modelo.tsx</code> foram completamente reestruturados:</p>
+
+  <div class="grid-2">
+    <div class="card-box">
+      <div class="card-title">1. Modo Bancada de Testes (<code>bancadaPos</code>)</div>
+      <p style="font-size: 8pt; color: #475569;">Ao clicar no botão <em>"Desmontar p/ bancada"</em>, os componentes removíveis (CPU, Cooler, RAM, GPU, SSD, Fonte) saem do gabinete e são organizados no espaço 3D lateral sobre a bancada.</p>
+    </div>
+    <div class="card-box">
+      <div class="card-title">2. Arrastar e Encaixar (Drag-and-Snap)</div>
+      <p style="font-size: 8pt; color: #475569;">O usuário clica diretamente sobre a peça na bancada e a move no espaço 3D em direção ao interior do chassi, simulando o manuseio real de uma montagem de hardware.</p>
+    </div>
+    <div class="card-box">
+      <div class="card-title">3. Guias de Encaixe Luminosas</div>
+      <p style="font-size: 8pt; color: #475569;">O componente <code>&lt;GuiaSlotEncaixe&gt;</code> renderiza anéis e halos de luz pulsantes sobre o soquete da CPU, slots DIMM de memória, trilho PCIe e baias quando a peça se aproxima.</p>
+    </div>
+    <div class="card-box">
+      <div class="card-title">4. Trava de Câmera (<code>OrbitControls lock</code>)</div>
+      <p style="font-size: 8pt; color: #475569;">Durante o arraste de qualquer componente, a rotação do cenário é bloqueada automaticamente, garantindo estabilidade milimétrica sem desvios de perspectiva.</p>
+    </div>
+  </div>
+
+  <div class="callout-highlight">
+    <strong>Validação Física e Técnica em Tempo Real no 3D (<code>validarEncaixe3D</code>):</strong><br>
+    O motor de simulação 3D aplica duas camadas estritas de verificação física e elétrica:
+    <ol style="margin-left: 16px; margin-top: 4px;">
+      <li><strong>Apoio Mecânico Estrutural:</strong> Impede que componentes flutuem sem sustentação. Por exemplo, o processador, a memória e a placa de vídeo só podem ser instalados se a placa-mãe já estiver fixada no chassi; e o cooler exige que a CPU já esteja soqueteada.</li>
+      <li><strong>Compatibilidade Real de Hardware:</strong> Caso o usuário tente encaixar uma CPU com soquete AM5 (ex.: Ryzen 7 9800X3D) em uma placa-mãe AM4, o encaixe é fisicamente rejeitado com retorno visual e mensagem técnica instantânea.</li>
+    </ol>
+  </div>
+
+  <h3>Personalização Estética de Iluminação (Cores de Chakra)</h3>
+  <p>O simulador 3D incorpora um sistema completo de iluminação ARGB sincronizado com materiais PBR, oferecendo 11 opções de cores temáticas (<em>Laranja Chakra, Âmbar Kyuubi, Vermelho Sharingan, Roxo Susanoo, Ciano Raio, Ciclo RGB</em>) e 3 efeitos de pulso (<em>Fixo, Respirar e Pulso</em>).</p>
+
+  <!-- SEÇÃO 4: DESENVOLVIMENTO DA GAMIFICAÇÃO PEDAGÓGICA -->
+  <h2>4. Desenvolvimento da Gamificação Pedagógica</h2>
+  <p>A gamificação foi arquitetada para transformar o aprendizado técnico da <strong>Arquitetura da Computação (modelo de Von Neumann)</strong> em uma experiência interativa e progressiva voltada ao público jovem:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 22%;">Patente de Montador</th>
+        <th style="width: 18%;">XP Exigido</th>
+        <th style="width: 30%;">Desafios Associados</th>
+        <th style="width: 30%;">Recompensa Desbloqueada</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Genin do Silício</strong></td>
+        <td>0 – 500 XP</td>
+        <td>Completar a primeira montagem com 8 peças 100% compatíveis.</td>
+        <td>Acesso às montagens básicas e 2 slots na Garagem.</td>
+      </tr>
+      <tr>
+        <td><strong>Chunin das Placas</strong></td>
+        <td>501 – 1500 XP</td>
+        <td>Montar na bancada 3D sem errar slots e pontuar no Quiz.</td>
+        <td>Cabos sleeved brancos no 3D e 5 slots na Garagem.</td>
+      </tr>
+      <tr>
+        <td><strong>Jonin do Overclock</strong></td>
+        <td>1501 – 3500 XP</td>
+        <td>Montar PC com excelente equilíbrio térmico de TDP e fonte.</td>
+        <td>Modos de iluminação ARGB avançados (Onda 3D).</td>
+      </tr>
+      <tr>
+        <td><strong>Kage do Hardware</strong></td>
+        <td>3500+ XP</td>
+        <td>Gabaritar todos os 12 temas de Arquitetura da Computação.</td>
+        <td>Gabinete de edição especial Dourada 3D e garagem ilimitada.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="grid-2">
+    <div class="card-box">
+      <div class="card-title">Aba de Perfil (<code>#perfil</code>) e Garagem</div>
+      <p style="font-size: 8pt; color: #475569;">Painel pessoal com histórico de aprendizado do Quiz, medidor de XP para a próxima patente e a "Garagem de Máquinas", onde o usuário pode salvar múltiplas montagens e recarregá-las no montador com 1 clique.</p>
+    </div>
+    <div class="card-box">
+      <div class="card-title">Envio Técnico no Gmail com Deep Link</div>
+      <p style="font-size: 8pt; color: #475569;">Disparo automático de e-mail transacional contendo as 8 peças com fotos reais, consumo elétrico, previsão de FPS em jogos, espelho em anexo PDF e deep link para reabrir a configuração instantaneamente.</p>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 5: CONCLUSÃO -->
+  <div class="avoid-break" style="margin-top: 14px;">
+    <h2>5. Conclusão</h2>
+    <p>A unificação dos dados e pontos fortes dos projetos anteriores transformou o <strong>Konoha Hardware</strong> em uma plataforma robusta e de referência: unindo a profundidade pedagógica da <strong>Arquitetura da Computação</strong> com a precisão comercial de <strong>191 peças reais</strong>, o dinamismo do <strong>simulador 3D com montagem física</strong> e o engajamento do <strong>ecossistema de gamificação</strong>.</p>
+    <p style="font-size: 8pt; color: #64748b; text-align: center; margin-top: 18px; border-top: 1px solid #e2e8f0; padding-top: 8px;">
+      Relatório oficial homologado pela Equipe de Desenvolvimento do Konoha Hardware no Google Antigravity IDE.
+    </p>
+  </div>
+
+</body>
+</html>

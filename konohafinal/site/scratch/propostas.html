@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Propostas Futuras de Evolução — Konoha Hardware</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
+
+    @page {
+      size: A4;
+      margin: 18mm 16mm 18mm 16mm;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-size: 9.6pt;
+      line-height: 1.48;
+      color: #1a1a1a;
+      background: #ffffff;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .page-break {
+      page-break-before: always;
+    }
+    .avoid-break {
+      page-break-inside: avoid;
+    }
+
+    /* Cabeçalho de Capa */
+    .header-box {
+      border: 1px solid #e2e8f0;
+      border-left: 6px solid #ff6a13;
+      background: #fafafa;
+      padding: 22px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    .badge-top {
+      display: inline-block;
+      font-size: 7.5pt;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #ff6a13;
+      background: rgba(255, 106, 19, 0.1);
+      padding: 4px 10px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      font-size: 21pt;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      font-size: 10.5pt;
+      font-weight: 500;
+      color: #475569;
+      margin-bottom: 12px;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 6px 16px;
+      font-size: 8.5pt;
+      color: #334155;
+      border-top: 1px solid #e2e8f0;
+      padding-top: 10px;
+      margin-top: 10px;
+    }
+
+    .meta-item strong {
+      color: #0f172a;
+    }
+
+    /* Seções */
+    h2 {
+      font-size: 12pt;
+      font-weight: 700;
+      color: #0f172a;
+      border-bottom: 2px solid #ff6a13;
+      padding-bottom: 3px;
+      margin-top: 14px;
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+      page-break-after: avoid;
+    }
+
+    h3 {
+      font-size: 9.8pt;
+      font-weight: 700;
+      color: #1e293b;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      page-break-after: avoid;
+    }
+
+    p {
+      margin-bottom: 6px;
+      text-align: justify;
+    }
+
+    ul, ol {
+      margin-left: 18px;
+      margin-bottom: 6px;
+    }
+
+    li {
+      margin-bottom: 2px;
+    }
+
+    /* Tabelas */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 8px 0 10px 0;
+      font-size: 8.3pt;
+      page-break-inside: avoid;
+    }
+
+    th, td {
+      border: 1px solid #cbd5e1;
+      padding: 5px 7px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #f1f5f9;
+      color: #0f172a;
+      font-weight: 700;
+    }
+
+    tr:nth-child(even) td {
+      background: #f8fafc;
+    }
+
+    /* Blocos de Destaque */
+    .callout {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-left: 4px solid #3b82f6;
+      padding: 8px 10px;
+      border-radius: 6px;
+      margin: 8px 0;
+      font-size: 8.6pt;
+      page-break-inside: avoid;
+    }
+
+    .callout-highlight {
+      background: #fff7ed;
+      border: 1px solid #ffedd5;
+      border-left: 4px solid #ff6a13;
+      padding: 8px 10px;
+      border-radius: 6px;
+      margin: 8px 0;
+      font-size: 8.6pt;
+      page-break-inside: avoid;
+    }
+
+    .callout-green {
+      background: #f0fdf4;
+      border: 1px solid #dcfce7;
+      border-left: 4px solid #16a34a;
+      padding: 8px 10px;
+      border-radius: 6px;
+      margin: 8px 0;
+      font-size: 8.6pt;
+      page-break-inside: avoid;
+    }
+
+    /* Código */
+    code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 7.8pt;
+      background: #f1f5f9;
+      color: #0f172a;
+      padding: 1px 4px;
+      border-radius: 3px;
+    }
+
+    pre {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 7.4pt;
+      background: #0f172a;
+      color: #f8fafc;
+      padding: 8px 10px;
+      border-radius: 6px;
+      overflow-x: auto;
+      margin: 6px 0 10px 0;
+      line-height: 1.34;
+      page-break-inside: avoid;
+    }
+
+    /* Cards e Grades */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin: 10px 0;
+      page-break-inside: avoid;
+    }
+
+    .card-box {
+      border: 1px solid #e2e8f0;
+      background: #f8fafc;
+      padding: 10px 12px;
+      border-radius: 6px;
+      font-size: 8.5pt;
+    }
+
+    .card-title {
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 3px;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 7.2pt;
+      font-weight: 600;
+      padding: 2px 6px;
+      border-radius: 3px;
+      background: #e2e8f0;
+      color: #334155;
+    }
+
+    .badge-orange {
+      background: #ffedd5;
+      color: #c2410c;
+    }
+
+    .badge-green {
+      background: #dcfce7;
+      color: #15803d;
+    }
+
+    .badge-blue {
+      background: #dbeafe;
+      color: #1d4ed8;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CAPA / CABEÇALHO -->
+  <div class="header-box">
+    <div class="badge-top">Engenharia de Software · Roadmap Estratégico</div>
+    <h1>Propostas Futuras de Evolução</h1>
+    <div class="subtitle">Documento Técnico de Requisitos, Arquitetura e Especificação Funcional (v2.0)</div>
+    <div class="meta-grid">
+      <div class="meta-item"><strong>Projeto:</strong> Konoha Hardware</div>
+      <div class="meta-item"><strong>Ambiente Padrão:</strong> Google Antigravity IDE</div>
+      <div class="meta-item"><strong>Objetivo:</strong> Recompensas, Perfil de Usuário & Envio no Gmail</div>
+      <div class="meta-item"><strong>Status:</strong> Especificação Aprovada para Desenvolvimento</div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 1: VISÃO GERAL -->
+  <h2>1. Visão Geral das Propostas e Contexto Estratégico</h2>
+  <p>Com a consolidação da base tecnológica do <strong>Konoha Hardware</strong> (Next.js 15, TypeScript estrito, catálogo com 191 peças reais, visualizador 3D interativo e suíte de testes E2E aprovada), este documento formaliza o planejamento da próxima fase de expansão da plataforma.</p>
+  <p>O objetivo é elevar a retenção pedagógica, o engajamento dos estudantes e a utilidade prática do montador por meio de três pilares integrados:</p>
+
+  <div class="grid-2">
+    <div class="card-box">
+      <div class="card-title">1. Sistema de Recompensas e Gamificação</div>
+      <p style="font-size: 8pt; color: #475569; margin: 0;">Mecânica de XP, moedas virtuais (K-Coins), patentes de montador e desbloqueio de personalizações visuais exclusivas no visualizador 3D.</p>
+    </div>
+    <div class="card-box">
+      <div class="card-title">2. Aba de Perfil de Usuário (<code>#perfil</code>)</div>
+      <p style="font-size: 8pt; color: #475569; margin: 0;">Painel de identidade integrado ao Google OAuth 2.0, "Garagem de Máquinas" para salvar e carregar montagens e histórico de aprendizado.</p>
+    </div>
+  </div>
+
+  <div class="callout-highlight">
+    <strong>3. Envio da Montagem com Resumos Técnicos Direto para o Gmail:</strong><br>
+    Permite ao visitante ou usuário logado disparar, com um único clique em <code>#resultado</code>, um relatório executivo formatado contendo as 8 peças, preços, consumo elétrico, margem da fonte, testes de FPS em jogos, anexo em PDF e deep link interativo para reabrir a configuração a qualquer momento.
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- SEÇÃO 2: PILAR 1 - RECOMPENSAS -->
+  <h2>2. Pilar 1: Sistema de Recompensas e Gamificação</h2>
+
+  <h3>2.1. Estrutura de Níveis e Patentes de Montador</h3>
+  <p>Os usuários acumulam Pontos de Experiência (XP) ao realizar atividades pedagógicas e montagens corretas, progredindo na hierarquia temática da plataforma:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 20%;">Faixa de Nível</th>
+        <th style="width: 20%;">XP Necessário</th>
+        <th style="width: 30%;">Título Honorário</th>
+        <th style="width: 30%;">Privilégio Desbloqueado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Níveis 1 a 3</strong></td>
+        <td>0 – 500 XP</td>
+        <td>Aprendiz de Hardware (Genin)</td>
+        <td>Acesso às montagens básicas e 2 vagas na Garagem.</td>
+      </tr>
+      <tr>
+        <td><strong>Níveis 4 a 6</strong></td>
+        <td>501 – 1500 XP</td>
+        <td>Técnico de Montagem (Chunin)</td>
+        <td>Desbloqueio de cabos sleeved brancos e 5 vagas na Garagem.</td>
+      </tr>
+      <tr>
+        <td><strong>Níveis 7 a 9</strong></td>
+        <td>1501 – 3500 XP</td>
+        <td>Engenheiro de Sistemas (Jonin)</td>
+        <td>Modos avançados de iluminação ARGB (Onda e Respiração 3D).</td>
+      </tr>
+      <tr>
+        <td><strong>Nível 10 (Max)</strong></td>
+        <td>3500+ XP</td>
+        <td>Mestre da Arquitetura (Kage)</td>
+        <td>Gabinete de edição especial Dourada 3D e vagas ilimitadas.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>2.2. Matriz de Conquistas (Badges) e Gatilhos Técnicos</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Título da Conquista</th>
+        <th>Gatilho / Ação Técnica</th>
+        <th>Recompensa</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Primeiro POST</strong></td>
+        <td>Concluir 1 montagem completa com 8 peças 100% compatíveis.</td>
+        <td><span class="badge badge-green">+100 XP</span> <span class="badge badge-orange">50 K-Coins</span></td>
+      </tr>
+      <tr>
+        <td><strong>Mestre de Von Neumann</strong></td>
+        <td>Alcançar 100% de acertos nos 12 temas do Quiz Educativo.</td>
+        <td><span class="badge badge-green">+300 XP</span> <span class="badge badge-orange">150 K-Coins</span> + Badge Ouro</td>
+      </tr>
+      <tr>
+        <td><strong>Mãos Limpas</strong></td>
+        <td>Montar o PC na bancada 3D ("Arrastar e Encaixar") sem errar nenhum slot.</td>
+        <td><span class="badge badge-green">+200 XP</span> <span class="badge badge-orange">100 K-Coins</span> + LED ARGB 3D</td>
+      </tr>
+      <tr>
+        <td><strong>Otimizador Econômico</strong></td>
+        <td>Montar PC funcional com GPU dedicada para 1080p abaixo de R$ 2.500.</td>
+        <td><span class="badge badge-green">+150 XP</span> <span class="badge badge-orange">75 K-Coins</span></td>
+      </tr>
+      <tr>
+        <td><strong>Poder Absoluto</strong></td>
+        <td>Configurar máquina topo de linha com TDP e fonte perfeitamente seguros.</td>
+        <td><span class="badge badge-green">+250 XP</span> <span class="badge badge-orange">125 K-Coins</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="page-break"></div>
+
+  <!-- SEÇÃO 3: PILAR 2 - PERFIL -->
+  <h2>3. Pilar 2: Aba de Perfil de Usuário (<code>#perfil</code>)</h2>
+
+  <p>A nova tela modular <code>components/telas/Perfil.tsx</code> integrará a identidade do usuário com seus dados de navegação e preferências técnicas:</p>
+
+  <div class="grid-2">
+    <div class="card-box">
+      <div class="card-title">Identidade & Nível</div>
+      <p style="font-size: 8pt; color: #475569;">Exibição da foto e nome vinculados via Google OAuth 2.0, medidor de XP para a próxima patente e saldo de Moedas Konoha acumuladas.</p>
+    </div>
+    <div class="card-box">
+      <div class="card-title">Garagem de PCs ("Minhas Máquinas")</div>
+      <p style="font-size: 8pt; color: #475569;">Lista de computadores personalizados e salvos, com ações para carregar no montador, visualizar relatório de FPS ou reenviar para o e-mail.</p>
+    </div>
+    <div class="card-box">
+      <div class="card-title">Mural de Medalhas</div>
+      <p style="font-size: 8pt; color: #475569;">Exibição de todas as conquistas do sistema, com feedback visual em tempo real para badges bloqueados e desbloqueados.</p>
+    </div>
+    <div class="card-box">
+      <div class="card-title">Painel de Aprendizado</div>
+      <p style="font-size: 8pt; color: #475569;">Estatísticas consolidadas de desempenho no Quiz de Arquitetura da Computação, destacando pontos fortes e conceitos a revisar.</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>Arquitetura Híbrida de Armazenamento (Local + Nuvem):</strong><br>
+    • <strong>Usuário Convidado (Guest):</strong> Armazenamento automático em <code>localStorage</code> (permite salvar até 2 máquinas temporárias).<br>
+    • <strong>Usuário Conectado (Google ID):</strong> Ao autenticar com o Google, os dados locais são mesclados e sincronizados em nuvem, garantindo portabilidade entre celular, tablet e computador.
+  </div>
+
+  <!-- SEÇÃO 4: PILAR 3 - ENVIO NO GMAIL -->
+  <h2>4. Pilar 3: Envio da Montagem com Resumos Técnicos Direto para o Gmail</h2>
+
+  <p>Na tela de resultado (<code>components/montador/Resultado.tsx</code>), o usuário contará com o botão <strong>"Receber Resumo Completo no Gmail"</strong>, acionando um modal de confirmação com preenchimento automático do e-mail cadastrado:</p>
+
+  <div class="callout-green">
+    <strong>Conteúdo do E-mail Transacional Entregue no Gmail:</strong>
+    <ol style="margin-left: 16px; margin-top: 6px;">
+      <li><strong>Cabeçalho Oficial:</strong> Identificador único da montagem (ex: <code>#KH-9842</code>) e data/hora da análise.</li>
+      <li><strong>Tabela Detalhada das 8 Peças:</strong> Miniatura das fotos reais, modelo exato de fabricante, especificações-chave e preços em R$.</li>
+      <li><strong>Ficha de Compatibilidade & Energia:</strong> Soquete confirmado, tipo de memória (DDR4/DDR5), consumo total em Watts e potência mínima recomendada da fonte com selo 80 Plus.</li>
+      <li><strong>Estimativa de FPS em Jogos:</strong> Tabela com taxa de quadros esperada para os 6 jogos em 1080p e 1440p.</li>
+      <li><strong>Deep Link Interativo (1 Clique):</strong> Botão de ação que recarrega a montagem exata no site Konoha Hardware para futuras edições.</li>
+      <li><strong>Anexo em PDF:</strong> Documento PDF em anexo com o espelho do relatório para impressão ou arquivamento.</li>
+    </ol>
+  </div>
+
+  <h3>Fluxo Técnico de Disparo e Entrega</h3>
+  <pre>
+[Usuário em #resultado] 
+       │
+       ▼ (Clica em "Receber no Gmail")
+[Modal de Confirmação] ──> Auto-preenche e-mail se logado via Google
+       │
+       ▼ (Confirma)
+[POST /api/enviar-resumo] ──> Validação de Payload (peças, specs, preços, deepLink)
+       │
+       ▼
+[Provedor de E-mail (Gmail API / Resend)] ──> Disparo autenticado TLS
+       │
+       ▼
+[Caixa de Entrada do Gmail] ──> E-mail responsivo entregue + PDF em anexo
+  </pre>
+
+  <!-- SEÇÃO 5: MODELAGEM TYPESCRIPT -->
+  <h2>5. Especificação dos Novos Tipos e Schemas TypeScript</h2>
+  <p>Para assegurar a integridade do código e conformidade estrita com o compilador TypeScript (<code>strict: true</code>), os novos módulos adotarão os seguintes contratos:</p>
+
+  <pre>
+// lib/konoha/recompensas.ts
+export type CategoriaConquista = 'quiz' | 'montador' | '3d' | 'economia' | 'especial';
+
+export interface Conquista {
+  id: string;
+  titulo: string;
+  descricao: string;
+  categoria: CategoriaConquista;
+  icone: string;
+  pontosXp: number;
+  moedasKonoha: number;
+  desbloqueadaEm?: string;
+}
+
+export interface Recompensa3D {
+  id: string;
+  nome: string;
+  tipo: 'led-argb' | 'cabo-sleeved' | 'cor-chassi';
+  precoMoedas: number;
+  propriedadeThree: Record&lt;string, unknown&gt;;
+  desbloqueada: boolean;
+}
+
+// lib/konoha/perfil.ts
+export interface MontagemSalva {
+  id: string;
+  nomePersonalizado: string;
+  criadaEm: string;
+  pecasIds: Record&lt;string, string&gt;;
+  valorTotal: number;
+  consumoWatts: number;
+}
+
+export interface PerfilUsuario {
+  id: string;
+  email: string;
+  nome: string;
+  fotoUrl?: string;
+  nivel: number;
+  xpAtual: number;
+  xpProximoNivel: number;
+  moedas: number;
+  conquistas: string[];
+  customizacoes3D: string[];
+  montagensSalvas: MontagemSalva[];
+}
+
+// lib/konoha/email.ts
+export interface PayloadEnvioEmail {
+  destinatarioEmail: string;
+  nomeDestinatario?: string;
+  idMontagem: string;
+  pecas: Record&lt;string, unknown&gt;;
+  valorTotalFormatado: string;
+  consumoWatts: number;
+  fonteRecomendadaWatts: number;
+  fpsEstimado: Record&lt;string, { fhd: number; qhd: number }&gt;;
+  deepLink: string;
+}
+  </pre>
+
+  <!-- SEÇÃO 6: CRONOGRAMA E DIVISÃO -->
+  <h2>6. Cronograma de Implementação e Divisão da Equipe</h2>
+  <p>A execução do roadmap será dividida em 4 sprints estruturadas entre os 6 integrantes da equipe:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 15%;">Sprint</th>
+        <th style="width: 35%;">Foco Principal</th>
+        <th style="width: 25%;">Integrantes</th>
+        <th style="width: 25%;">Branch do GitHub</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Sprint 1</strong></td>
+        <td>Endpoint de e-mail, template HTML e deep link.</td>
+        <td>Edwin & Leonardo</td>
+        <td><code>grupo-1/envio-gmail</code></td>
+      </tr>
+      <tr>
+        <td><strong>Sprint 2</strong></td>
+        <td>Aba de perfil (<code>#perfil</code>) e garagem de máquinas.</td>
+        <td>Breno & Giovane</td>
+        <td><code>grupo-1/aba-perfil</code></td>
+      </tr>
+      <tr>
+        <td><strong>Sprint 3</strong></td>
+        <td>Motor de XP, cálculo de moedas e loja 3D.</td>
+        <td>Eduardo & Gabriel</td>
+        <td><code>grupo-1/recompensas</code></td>
+      </tr>
+      <tr>
+        <td><strong>Sprint 4</strong></td>
+        <td>Testes automatizados E2E e homologação.</td>
+        <td>Gabriel & Leonardo</td>
+        <td><code>grupo-1/testes-qa</code></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- SEÇÃO 7: CRITÉRIOS DE ACEITE -->
+  <div class="avoid-break">
+    <h2>7. Critérios de Aceite e Garantia da Qualidade</h2>
+    <ul>
+      <li><strong>Gamificação:</strong> O XP e as K-Coins devem ser somados imediatamente após a conclusão da ação, sem travar a interface nem degradar a taxa de quadros (60 FPS) no 3D.</li>
+      <li><strong>Garagem de Máquinas:</strong> As montagens salvas no perfil devem reabrir no montador restaurando com 100% de exatidão as 8 peças selecionadas.</li>
+      <li><strong>Disparo no Gmail:</strong> O e-mail formatado deve chegar na caixa de entrada em até 10 segundos, com renderização correta no aplicativo do Gmail e anexo em PDF.</li>
+      <li><strong>Testes Automatizados:</strong> Manutenção de <strong>0 erros</strong> no TypeScript (<code>tsc --noEmit</code>) e inclusão de testes automatizados com Playwright para os novos fluxos de perfil e envio.</li>
+    </ul>
+
+    <p style="font-size: 8pt; color: #64748b; text-align: center; margin-top: 20px; border-top: 1px solid #e2e8f0; padding-top: 8px;">
+      Documento aprovado pela Equipe de Desenvolvimento do Konoha Hardware no Google Antigravity IDE.
+    </p>
+  </div>
+
+</body>
+</html>

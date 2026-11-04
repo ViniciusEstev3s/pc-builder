@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Proposta de Identidade: Naruto Tech & Hardware — Konoha Hardware</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
+
+    @page {
+      size: A4;
+      margin: 18mm 16mm 18mm 16mm;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-size: 9.5pt;
+      line-height: 1.48;
+      color: #1a1a1a;
+      background: #ffffff;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .page-break {
+      page-break-before: always;
+    }
+    .avoid-break {
+      page-break-inside: avoid;
+    }
+
+    /* Cabeçalho Executivo */
+    .header-box {
+      border: 1px solid #e2e8f0;
+      border-left: 6px solid #ff6a13;
+      background: #fafafa;
+      padding: 22px;
+      border-radius: 8px;
+      margin-bottom: 18px;
+    }
+
+    .badge-top {
+      display: inline-block;
+      font-size: 7.5pt;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #ff6a13;
+      background: rgba(255, 106, 19, 0.1);
+      padding: 4px 10px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      font-size: 20pt;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      font-size: 10.2pt;
+      font-weight: 500;
+      color: #475569;
+      margin-bottom: 12px;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 6px 16px;
+      font-size: 8.5pt;
+      color: #334155;
+      border-top: 1px solid #e2e8f0;
+      padding-top: 10px;
+      margin-top: 10px;
+    }
+
+    .meta-item strong {
+      color: #0f172a;
+    }
+
+    /* Seções */
+    h2 {
+      font-size: 12pt;
+      font-weight: 700;
+      color: #0f172a;
+      border-bottom: 2px solid #ff6a13;
+      padding-bottom: 3px;
+      margin-top: 15px;
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+      page-break-after: avoid;
+    }
+
+    h3 {
+      font-size: 9.8pt;
+      font-weight: 700;
+      color: #1e293b;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      page-break-after: avoid;
+    }
+
+    p {
+      margin-bottom: 6px;
+      text-align: justify;
+    }
+
+    ul, ol {
+      margin-left: 18px;
+      margin-bottom: 6px;
+    }
+
+    li {
+      margin-bottom: 2px;
+    }
+
+    /* Tabelas */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 8px 0 12px 0;
+      font-size: 8.3pt;
+      page-break-inside: avoid;
+    }
+
+    th, td {
+      border: 1px solid #cbd5e1;
+      padding: 5px 7px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #f1f5f9;
+      color: #0f172a;
+      font-weight: 700;
+    }
+
+    tr:nth-child(even) td {
+      background: #f8fafc;
+    }
+
+    /* Destaques e Callouts */
+    .callout {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-left: 4px solid #3b82f6;
+      padding: 8px 10px;
+      border-radius: 6px;
+      margin: 8px 0;
+      font-size: 8.6pt;
+      page-break-inside: avoid;
+    }
+
+    .callout-highlight {
+      background: #fff7ed;
+      border: 1px solid #ffedd5;
+      border-left: 4px solid #ff6a13;
+      padding: 8px 10px;
+      border-radius: 6px;
+      margin: 8px 0;
+      font-size: 8.6pt;
+      page-break-inside: avoid;
+    }
+
+    .callout-green {
+      background: #f0fdf4;
+      border: 1px solid #dcfce7;
+      border-left: 4px solid #16a34a;
+      padding: 8px 10px;
+      border-radius: 6px;
+      margin: 8px 0;
+      font-size: 8.6pt;
+      page-break-inside: avoid;
+    }
+
+    /* Grades de Cards */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin: 8px 0;
+      page-break-inside: avoid;
+    }
+
+    .card-box {
+      border: 1px solid #e2e8f0;
+      background: #f8fafc;
+      padding: 9px 11px;
+      border-radius: 6px;
+      font-size: 8.4pt;
+    }
+
+    .card-title {
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 2px;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 7.2pt;
+      font-weight: 600;
+      padding: 2px 5px;
+      border-radius: 3px;
+      background: #e2e8f0;
+      color: #334155;
+    }
+
+    .badge-orange {
+      background: #ffedd5;
+      color: #c2410c;
+    }
+
+    .badge-blue {
+      background: #dbeafe;
+      color: #1d4ed8;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CAPA / CABEÇALHO -->
+  <div class="header-box">
+    <div class="badge-top">Engenharia de Software · Direção Criativa & UX</div>
+    <h1>Proposta de Identidade: Naruto Tech & Hardware</h1>
+    <div class="subtitle">A Arte de Fundir a Filosofia de Naruto com Tecnologia de Ponta de Forma Madura, Imersiva e Universal</div>
+    <div class="meta-grid">
+      <div class="meta-item"><strong>Cliente / Projeto:</strong> Konoha Hardware</div>
+      <div class="meta-item"><strong>Ambiente Padrão:</strong> Google Antigravity IDE</div>
+      <div class="meta-item"><strong>Conceito Central:</strong> Dupla Camada de Leitura (Dual-Layer UX)</div>
+      <div class="meta-item"><strong>Público-Alvo:</strong> Estudantes e Jovens (15 a 24 anos) & Clientes Gerais</div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 1: RESUMO EXECUTIVO -->
+  <h2>1. Sumário Executivo: O Posicionamento Estratégico</h2>
+  <p>Esta proposta apresenta a estratégia de design, <em>branding</em> e experiência do usuário (UX) desenvolvida para o <strong>Konoha Hardware</strong>. O objetivo central é responder à demanda do cliente: <strong>como integrar a rica mitologia do universo de Naruto sem transformar o site em algo infantil, bobo ou restrito apenas a quem consome animes</strong>.</p>
+  <p>A solução adotada baseia-se no conceito de <strong>Dupla Camada de Leitura (Dual-Layer UX)</strong>:</p>
+
+  <div class="grid-2">
+    <div class="card-box">
+      <div class="card-title"><span class="badge badge-blue">CAMADA 1</span> O Visitante Geral (Não-fã)</div>
+      <p style="font-size: 8pt; color: #475569; margin: 0;">Enxerga uma plataforma gamer/tech premium, com visual refinado em preto, grafite e neon laranja (similar a marcas como ASUS ROG ou Razer), com navegação profissional, 191 peças reais com preços e alta autoridade técnica.</p>
+    </div>
+    <div class="card-box">
+      <div class="card-title"><span class="badge badge-orange">CAMADA 2</span> O Fã de Naruto (Imersão Afetiva)</div>
+      <p style="font-size: 8pt; color: #475569; margin: 0;">Identifica instantaneamente homenagens refinadas: paleta de chakra, nomes de patentes de poder (Genin a Hokage), metáforas elétricas e de refrigeração, cores temáticas de LED no 3D e o espírito de forja ninja na montagem.</p>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 2: COMO EVITAR A INFANTILIZAÇÃO -->
+  <h2>2. O Desafio: Como Evitar a "Infantilização" de uma Marca Tech</h2>
+  <p>O erro comum de projetos que adotam temáticas pop é a superficialidade: recortar personagens de anime, usar cores primárias espalhafatosas e piadas caricatas que afastam clientes que buscam segurança para investir milhares de reais em um computador. A equipe do Konoha Hardware neutralizou esse risco através de três pilares de maturidade visual:</p>
+
+  <div class="callout-highlight">
+    <strong>Pilares de Maturidade Visual e Credibilidade Comercial:</strong>
+    <ol style="margin-left: 16px; margin-top: 4px;">
+      <li><strong>Abstração Simbólica:</strong> Não usamos desenhos animados colados na interface. Empregamos conceitos filosóficos, símbolos de energia e metáforas de engenharia de hardware.</li>
+      <li><strong>Estética Cyber-Ninja Minimalista:</strong> Predomínio de superfícies escuras texturizadas (preto carvão <code>#07080a</code>, cinza grafite e branco neve), com o laranja vibrante restrito a botões de ação e indicadores de energia.</li>
+      <li><strong>Tipografia Industrial:</strong> Emprego da família <em>Unbounded</em> (títulos geométricos e pesados), <em>Manrope</em> (leitura ergonômica de especificações) e <em>JetBrains Mono</em> (dados técnicos de barramentos, clock e TDP).</li>
+    </ol>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- SEÇÃO 3: OS 4 PILARES DA FUSÃO -->
+  <h2>3. Os 4 Pilares da Fusão: Naruto + Tecnologia</h2>
+
+  <h3>3.1. Cores & Iluminação: A Cromoterapia do Chakra</h3>
+  <p>No universo de Naruto, o <strong>Chakra</strong> é a energia vital canalizada pelos ninjas. Na arquitetura de computadores, a <strong>energia elétrica</strong> (Watts, amperagem e tensões de 12V da fonte) é a força vital que circula nos circuitos de silício:</p>
+  <ul>
+    <li><strong>Laranja Chakra (<code>#ff6a13</code> / <code>#ff6b00</code>):</strong> Cor de acento de alta performance que remete ao calor e à aceleração dos circuitos, perfeitamente alinhada à energia da Vila da Folha sem parecer infantil.</li>
+    <li><strong>11 Perfis de Iluminação ARGB no Visualizador 3D:</strong> As cores dos LEDs internos do chassi foram batizadas com homenagens que fazem sentido tanto estético quanto temático:
+      <em>Laranja Chakra</em> (Konoha), <em>Âmbar Kyuubi</em> (potência máxima e overclock), <em>Vermelho Sharingan</em> (tempo de resposta rápido em eSports), <em>Roxo Susanoo</em> (estabilidade de VRM e blindagem), <em>Ciano Raio/Chidori</em> (velocidade de barramento PCIe Gen5), <em>Azul Rasengan</em> (refrigeração líquida contínua) e <em>Ciclo RGB</em>.</li>
+  </ul>
+
+  <h3>3.2. Nomenclatura e Hierarquia Técnica de Máquinas</h3>
+  <p>Em vez de termos genéricos como "PC Básico" ou "PC Top", as configurações pré-montadas utilizam a hierarquia shinobi tradicional como um indicador intuitivo de potência computacional:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 22%;">Patente Shinobi</th>
+        <th style="width: 28%;">Posicionamento de Mercado</th>
+        <th style="width: 50%;">Significado Técnico e Configuração Real</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Konoha Academy</strong></td>
+        <td>Gamer Econômico 1080p</td>
+        <td>Porta de entrada acessível: Kit Xeon X99 / RX 580 8GB (R$ 2.419,30).</td>
+      </tr>
+      <tr>
+        <td><strong>Konoha Genin</strong></td>
+        <td>Entrada Competitiva 1080p</td>
+        <td>Plataformas modernas Intel Core i3 ou Ryzen 5 + RTX 3050 / RX 6600.</td>
+      </tr>
+      <tr>
+        <td><strong>Konoha Chunin</strong></td>
+        <td>Intermediário Full HD / Ray Tracing</td>
+        <td>Equilíbrio de alto desempenho: Core i5 / Ryzen 5 + GeForce RTX 4060.</td>
+      </tr>
+      <tr>
+        <td><strong>Konoha Jonin</strong></td>
+        <td>Avançado Quad HD (1440p)</td>
+        <td>Máquina de alto nível: AMD Ryzen 7 + GeForce RTX 4070 Super.</td>
+      </tr>
+      <tr>
+        <td><strong>Konoha ANBU</strong></td>
+        <td>Entusiasta 4K & IA</td>
+        <td>Operações de missão crítica: Core i7 + GeForce RTX 4080 Super.</td>
+      </tr>
+      <tr>
+        <td><strong>Konoha Hokage</strong></td>
+        <td>Extremo Competitivo & Render</td>
+        <td>A liderança máxima em desempenho: Ryzen 7 9800X3D + GeForce RTX 4090.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>3.3. Metáforas Tecnológicas Sofisticadas</h3>
+  <p>A aplicação estabelece correspondências intelectuais elegantes entre a tecnologia real e o lore:</p>
+  <ul>
+    <li><strong>VRM e Fonte = Sistema Circulatório de Chakra:</strong> A entrega de energia pura e filtrada para o processador é tratada com o mesmo respeito que o fluxo de energia nos meridianos do corpo.</li>
+    <li><strong>GPU = Dōjutsu (Técnicas Oculares):</strong> A capacidade visual das placas de vídeo GeForce e Radeon de renderizar Ray Tracing e IA espelha o poder dos olhos lendários do universo.</li>
+    <li><strong>Instruções de CPU = Jutsus e Selos:</strong> O ciclo de busca, decodificação e execução da arquitetura de Von Neumann opera como selos de mão executados em nanossegundos.</li>
+    <li><strong>Soquetes = Linhagens de Clãs:</strong> As plataformas AMD (AM4/AM5) e Intel (LGA 1700/1851) são tratadas com suas heranças genéticas e compatibilidades estritas.</li>
+  </ul>
+
+  <h3>3.4. A Bancada 3D e o Ritual da Montagem</h3>
+  <p>Montar um computador na vida real exige paciência, cuidado com a eletricidade estática e precisão milimétrica. A nova funcionalidade de <strong>Bancada 3D ("Arrastar e Encaixar")</strong> resgata o espírito de forja do artesão ninja: o usuário pega a peça, confere os slots guiados por anéis de luz e sente o engate firme e seguro de cada componente no gabinete.</p>
+
+  <div class="page-break"></div>
+
+  <!-- SEÇÃO 4: COMUNICAÇÃO PRÁTICA COM OS DOIS PÚBLICOS -->
+  <h2>4. Como o Site Comunica com os Dois Públicos na Prática</h2>
+  <p>A tabela a seguir comprova como cada elemento da interface foi desenhado para encantar o fã sem afastar o cliente corporativo ou tradicional:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 24%;">Elemento do Site</th>
+        <th style="width: 38%;">Percepção do Visitante Comum (Não-fã)</th>
+        <th style="width: 38%;">Percepção do Fã de Naruto</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Nome da Marca</strong><br><em>Konoha Hardware</em></td>
+        <td>Nome moderno de tecnologia com sonoridade japonesa limpa e estética oriental contemporânea.</td>
+        <td>Referência direta à Vila Oculta da Folha, símbolo de amizade, resiliência e evolução contínua.</td>
+      </tr>
+      <tr>
+        <td><strong>Paleta de Cores</strong><br><em>Preto, Grafite e Laranja</em></td>
+        <td>Esquema cromático esportivo, enérgico e contrastante, comum em linhas de placas de vídeo gamer.</td>
+        <td>O visual clássico do protagonista e a cor do chakra transbordando sob máxima performance.</td>
+      </tr>
+      <tr>
+        <td><strong>Nomes dos PCs Prontos</strong><br><em>Genin, Chunin, Jonin, Hokage</em></td>
+        <td>Classificação hierárquica clara de poder e orçamento, fácil de memorizar e comparar.</td>
+        <td>Sensação de progresso na carreira ninja: subindo de patente conforme a máquina fica mais forte.</td>
+      </tr>
+      <tr>
+        <td><strong>Iluminação LED no 3D</strong><br><em>Laranja, Vermelho, Roxo, Ciano</em></td>
+        <td>Uma ferramenta excelente para testar as cores do gabinete antes de comprar as ventoinhas.</td>
+        <td>A oportunidade de montar um PC temático do Sharingan, do Chidori ou do Susanoo.</td>
+      </tr>
+      <tr>
+        <td><strong>Quiz de Arquitetura</strong><br><em>12 temas de Von Neumann</em></td>
+        <td>Um teste de conhecimento acadêmico sério sobre memória, processador e barramentos.</td>
+        <td>O verdadeiro "Exame Chunin" da ciência da computação, onde apenas os dedicados passam.</td>
+      </tr>
+      <tr>
+        <td><strong>Gamificação & K-Coins</strong><br><em>XP e Moedas Konoha</em></td>
+        <td>Um programa de fidelidade moderno que recompensa o tempo de estudo e uso no site.</td>
+        <td>Missões shinobi remuneradas com Ryos virtuais para personalizar o próprio equipamento.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- SEÇÃO 5: CONCLUSÃO E RECOMENDAÇÃO -->
+  <div class="avoid-break" style="margin-top: 16px;">
+    <h2>5. Conclusão e Recomendação para Apresentação ao Cliente</h2>
+    <p>A abordagem de design adotada no <strong>Konoha Hardware</strong> atinge com precisão o equilíbrio solicitado pelo cliente:</p>
+    <ul>
+      <li><strong>Não é infantil:</strong> Não há poluição visual, mascotes fofos fora de contexto ou estética de brinquedo. O design é sóbrio, focado em alta tecnologia e especificações reais de hardware.</li>
+      <li><strong>Não é excludente:</strong> Qualquer pessoa leiga ou cliente corporativo consegue pesquisar, orçar e entender a compatibilidade de 191 peças reais com facilidade.</li>
+      <li><strong>É imensamente recompensador para o fã:</strong> Cada detalhe, nome, cor de LED e metáfora técnica foi pensada para criar um senso genuíno de pertencimento e entusiasmo.</li>
+    </ul>
+
+    <div class="callout-green" style="margin-top: 10px;">
+      <strong>Recomendação Final:</strong> Apresentar ao cliente este documento consolidando a tese de que a temática de Naruto atua como um <em>diferencial emocional e mercadológico</em>, mantendo a credibilidade de um software profissional de Engenharia de Software.
+    </div>
+
+    <p style="font-size: 8pt; color: #64748b; text-align: center; margin-top: 16px; border-top: 1px solid #e2e8f0; padding-top: 8px;">
+      Proposta de Identidade e Direção Criativa homologada pela Equipe Konoha Hardware no Google Antigravity IDE.
+    </p>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+N°,MODELO,MARCA,SOQUETE,C/T,TDP,FREQ,IGPU,MODALIDADE,PREÇO
+1,Intel Core i3-10100,Intel,LGA 1200,4C/8T,65W,3.6 / 4.3 GHz,Intel UHD Graphics 630,Escritório / Básico,R$900.00
+2,Intel Core i3-12100F,Intel,LGA 1700,4C/8T,58W,3.3 / 4.3 GHz,Não possui (Requer GPU),Gamer de Entrada / Escritório,R$800.00
+3,Intel Core i3-14100,Intel,LGA 1700,4C/8T,60W,3.5 / 4.7 GHz,Intel UHD Graphics 730,Escritório / Multitarefa leve,R$700.00
+4,Intel Core i5-10400F,Intel,LGA 1200,6C/12T,65W,2.9 / 4.3 GHz,Não possui (Requer GPU),Gamer de Entrada / Escritório,R$900.00
+5,Intel Core i5-12400F,Intel,LGA 1700,6C/12T,65W,2.5 / 4.4 GHz,Não possui (Requer GPU),Gamer Custo-Benefício,R$800.00
+6,Intel Core i5-13400F,Intel,LGA 1700,10C/16T,65W,2.5 / 4.6 GHz,Não possui (Requer GPU),Gamer Intermédio / Produtividade,"R$1,300.00"
+7,Intel Core i5-13600K,Intel,LGA 1700,14C/20T,125W,3.5 / 5.1 GHz,Intel UHD Graphics 770,Gamer Intermédio / Criação,"R$1,900.00"
+8,Intel Core i5-14600K,Intel,LGA 1700,14C/20T,125W,3.5 / 5.3 GHz,Intel UHD Graphics 770,Gamer Avançado / Multitarefa,"R$1,700.00"
+9,Intel Core i7-12700K,Intel,LGA 1700,12C/20T,125W,3.6 / 5.0 GHz,Intel UHD Graphics 770,Gamer Avançado / Edição,"R$1,800.00"
+10,Intel Core i7-13700K,Intel,LGA 1700,16C/24T,125W,3.4 / 5.4 GHz,Intel UHD Graphics 770,Gamer High-End / Criação de Conteúdo,"R$2,000.00"
+11,Intel Core i7-14700K,Intel,LGA 1700,20C/28T,125W,3.4 / 5.6 GHz,Intel UHD Graphics 770,Gamer High-End / Workstation,"R$2,100.00"
+12,Intel Core i9-13900K,Intel,LGA 1700,24C/32T,125W,3.0 / 5.8 GHz,Intel UHD Graphics 770,Entusiasta / Workstation,"R$3,000.00"
+13,Intel Core i9-14900K,Intel,LGA 1700,24C/32T,125W,3.2 / 6.0 GHz,Intel UHD Graphics 770,Gamer Topo de Linha / Workstation,"R$2,900.00"
+14,Intel Core Ultra 5 245K,Intel,LGA 1851,14C/14T,125W,4.2 / 5.2 GHz,Intel Graphics (4 Xe-cores),Gamer Moderno / Eficiência,"R$1,000.00"
+15,Intel Core Ultra 7 265K,Intel,LGA 1851,20C/20T,125W,3.9 / 5.5 GHz,Intel Graphics (4 Xe-cores),Gamer High-End / IA,"R$2,000.00"
+16,Intel Core Ultra 9 285K,Intel,LGA 1851,24C/24T,125W,3.7 / 5.7 GHz,Intel Graphics (4 Xe-cores),Entusiasta / Workstation IA,"R$3,500.00"
+17,AMD Ryzen 3 3200G,AMD,AM4,4C/4T,65W,3.6 / 4.0 GHz,Radeon Vega 8,Escritório / Básico (Vídeo Integrado),R$440.00
+18,AMD Ryzen 5 4600G,AMD,AM4,6C/12T,65W,3.7 / 4.2 GHz,Radeon Vega 7,Escritório Avançado / Jogos Leves,R$700.00
+19,AMD Ryzen 5 5600G,AMD,AM4,6C/12T,65W,3.9 / 4.4 GHz,Radeon Vega 7,Escritório / Jogos de Entrada,R$900.00
+20,AMD Ryzen 5 3600,AMD,AM4,6C/12T,65W,3.6 / 4.2 GHz,Não possui (Requer GPU),Gamer de Entrada Económico,R$650.00
+21,AMD Ryzen 5 5500,AMD,AM4,6C/12T,65W,3.6 / 4.2 GHz,Não possui (Requer GPU),Gamer de Entrada Custo-Benefício,R$600.00
+22,AMD Ryzen 5 5600,AMD,AM4,6C/12T,65W,3.5 / 4.4 GHz,Não possui (Requer GPU),Gamer Intermédio Custo-Benefício,R$900.00
+23,AMD Ryzen 7 5700X,AMD,AM4,8C/16T,65W,3.4 / 4.6 GHz,Não possui (Requer GPU),Gamer Intermédio / Produtividade,"R$1,200.00"
+24,,,,,,,,,
+25,AMD Ryzen 7 5800X3D,AMD,AM4,8C/16T,105W,3.4 / 4.5 GHz,Não possui (Requer GPU),Gamer Alto Desempenho (AM4),"R$2,000.00"
+26,AMD Ryzen 5 7600,AMD,AM5,6C/12T,65W,3.8 / 5.1 GHz,"AMD Radeon Graphics (RDNA 2, 2 CUs)",Gamer Intermédio Atual (DDR5),"R$1,300.00"
+27,AMD Ryzen 5 7600X,AMD,AM5,6C/12T,105W,4.7 / 5.3 GHz,"AMD Radeon Graphics (RDNA 2, 2 CUs)",Gamer Intermédio Alto,"R$1,400.00"
+28,AMD Ryzen 7 7700,AMD,AM5,8C/16T,65W,3.8 / 5.3 GHz,"AMD Radeon Graphics (RDNA 2, 2 CUs)",Gamer Avançado / Eficiente,"R$1,650.00"
+29,AMD Ryzen 7 7700X,AMD,AM5,8C/16T,105W,4.5 / 5.4 GHz,"AMD Radeon Graphics (RDNA 2, 2 CUs)",Gamer Avançado / Produtividade,"R$1,750.00"
+30,AMD Ryzen 7 7800X3D,AMD,AM5,8C/16T,120W,4.2 / 5.0 GHz,"AMD Radeon Graphics (RDNA 2, 2 CUs)",Gamer Competitivo / Topo para Jogos,"R$2,000.00"
+31,AMD Ryzen 9 7900X,AMD,AM5,12C/24T,170W,4.7 / 5.6 GHz,"AMD Radeon Graphics (RDNA 2, 2 CUs)",Gamer High-End / Workstation,"R$2,100.00"
+32,AMD Ryzen 9 7950X,AMD,AM5,16C/32T,170W,4.5 / 5.7 GHz,"AMD Radeon Graphics (RDNA 2, 2 CUs)",Workstation / Renderização 3D,"R$3,700.00"
+33,AMD Ryzen 9 7950X3D,AMD,AM5,16C/32T,120W,4.2 / 5.7 GHz,"AMD Radeon Graphics (RDNA 2, 2 CUs)",Gamer Topo de Linha / Workstation,"R$4,200.00"
+34,AMD Ryzen 5 9600X,AMD,AM5,6C/12T,65W,3.9 / 5.4 GHz,"AMD Radeon Graphics (RDNA 2, 2 CUs)",Gamer Nova Geração (Zen 5),"R$1,400.00"
+35,AMD Ryzen 7 9700X,AMD,AM5,8C/16T,65W,3.8 / 5.5 GHz,"AMD Radeon Graphics (RDNA 2, 2 CUs)",Gamer Avançado Eficiente (Zen 5),"R$1,800.00"
+36,AMD Ryzen 7 9800X3D,AMD,AM5,8C/16T,120W,4.7 / 5.2 GHz,"AMD Radeon Graphics (RDNA 2, 2 CUs)",Gamer Extremo / Melhor para Jogos,"R$2,500.00"
+37,AMD Ryzen 9 9900X,AMD,AM5,12C/24T,120W,4.4 / 5.6 GHz,"AMD Radeon Graphics (RDNA 2, 2 CUs)",Gamer High-End / Workstation,"R$2,200.00"
+38,AMD Ryzen 9 9950X,AMD,AM5,16C/32T,170W,4.3 / 5.7 GHz,"AMD Radeon Graphics (RDNA 2, 2 CUs)",Workstation Extrema (Zen 5),"R$3,500.00"
+39,AMD Ryzen 9 9950X3D,AMD,AM5,16C/32T,170W,4.3 / 5.7 GHz,"AMD Radeon Graphics (RDNA 2, 2 CUs)",Workstation Extrema (Zen 5),"R$3,500.00"
+40,Xeon E5-2697A v4,Intel,LGA 2011-3,16C / 32T,145W,2.6 GHz / 3.6 GHz,Não possui (Requer GPU),Servidor / Kit X99 (Broadwell-EP),R$200.00
+41,Xeon E5-2680 v4,Intel,LGA 2011-3,14C / 28T,120W,2.4 GHz / 3.3 GHz,Não possui (Requer GPU),Servidor / Kit X99 (Broadwell-EP),R$70.00
+42,Xeon E5-2667 v4,Intel,LGA 2011-3,8C / 16T,135W,3.2 GHz / 3.6 GHz,Não possui (Requer GPU),Servidor / Jogos X99 (Frequência Alta),R$150.00
+,,,,,,,,,
